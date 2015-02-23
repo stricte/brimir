@@ -1,0 +1,33 @@
+<div class="row collapse">
+  <div class="medium-12 columns">
+    <div class="panel">
+      <div class="row collapse">
+        <div class="medium-9 columns">
+          <h4 class="filter-title no-m pts"><%= @user.email %></h4>
+        </div>
+        <div class="medium-3 columns">
+          <%= link_to t(:user_tickets), tickets_user_path(@user.id), class: 'no-m tiny button right radius' %>
+        </div>
+      </div>
+    </div>
+
+    <table class="full">
+      <thead>
+        <th class="title"><%= t(:status)%></th>
+        <th><%= t(:tickets_count)%></th>
+        <th><%= t(:tickets_consumed_time_sum)%></th>
+        <th><%= t(:tickets_labels)%></th>
+      </thead>
+      <tbody>
+        <% Ticket.statuses.keys.each do |status|%>
+          <tr>
+            <td><b><%= link_to t(status.to_sym), tickets_user_path(@user.id, status: status) %></b></td>
+            <td><%= Ticket.filter_by_assignee_id(@user.id).by_status(status).count%></td>
+            <td><%= distance_of_time_in_words(Ticket.filter_by_assignee_id(@user.id).by_status(status).sum(:time_consumed)*60)%></td>
+            <td><%= render Label.where(id: Ticket.filter_by_assignee_id(@user.id).by_status(status).joins(:labelings).pluck(:label_id).uniq).all%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

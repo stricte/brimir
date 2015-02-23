@@ -1,0 +1,80 @@
+<div class="panel no-b pam">
+  <div class="row collapse">
+    <div class="medium-6 columns">
+      <h3 class="filter-title no-m pts plm">
+
+        <% if params[:q].present? %>
+          <%= t(:count_tickets_containing, count: @tickets.count) %> '<em><%= params[:q].to_s %></em>'
+        <% else %>
+          <%= t(:count_tickets, count: @tickets.count) %>
+        <% end %>
+
+        <% if params[:status].present? && Ticket.statuses[params[:status]]%>
+          , '<em><%= params[:status]%></em>'
+        <% end %>
+      </h3>
+    </div>
+    <div class="medium-6 columns">
+      <%= link_to t(:back), stats_user_path(@user.id), class: 'no-m tiny button right radius' %>
+    </div>
+  </div>
+</div>
+<table class="full">
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr data-ticket-url="<%= ticket_url(ticket) %>">
+
+        <td class="priority-<%= ticket.priority %> table-nowrap">
+          <span class="block"><%= ticket.user.email %></span>
+          <% if !ticket.subject.nil? %>
+            <a href="<%= ticket_url(ticket) %>">
+              <strong><%= ticket.subject %></strong>
+            </a>
+          <% else %>
+            <%= link_to ticket do %>
+              <em><%= t(:no_subject) %></em>
+            <% end %>
+          <% end %>
+        </td>
+
+        <td>
+          <% if ticket.replies.size > 0 %>
+            <span class="secondary ba radius label ml" title="<%= ticket.replies.size %> <%= t(:replies) %>"><%= ticket.replies.size %></span>
+          <% end %>
+        </td>
+
+        <td class="text-secondary table-nowrap">
+          <% ticket.labels.viewable_by(current_user).each do |label| %>
+            <%= render label %>
+          <% end %>
+        </td>
+        <td class="nowrap text-right text-secondary">
+          <span class="block"><%= l ticket.created_at.in_time_zone(current_user.time_zone), format: :short %></span>
+          <% if ticket.assignee %>
+            <i class="fa fa-user"></i> <%= ticket.assignee.email %>
+          <% else %>
+            <em><%= t(:unassigned) %></em>
+          <% end %>
+        </td>
+        <td class="nowrap text-right text-secondary">
+          <span class=""><%= distance_of_time_in_words(ticket.time_consumed*60) %></span>
+        </td>
+      </tr>
+    <% end %>
+
+    <% if @tickets.empty? %>
+      <tr>
+        <td colspan="100%"><%= t(:no_tickets_found) %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+<% unless @tickets.empty? %>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= will_paginate @tickets %>
+    </div>
+  </div>
+<% end %>

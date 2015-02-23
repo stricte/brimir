@@ -20,6 +20,17 @@ class UsersController < ApplicationController
 
   before_filter :load_locales, except: :index
 
+  def tickets
+    @user = User.find(params[:id])
+    @tickets = Ticket.filter_by_assignee_id(@user.id)
+    @tickets = @tickets.by_status(params[:status]) unless Ticket.statuses[params[:status]].blank?
+    @tickets = @tickets.paginate(page: params[:page], per_page: current_user.per_page)
+  end
+
+  def stats
+    @user = User.find(params[:id])
+  end
+
   def edit
     @user = User.find(params[:id])
   end
@@ -108,6 +119,7 @@ class UsersController < ApplicationController
           :time_zone,
           :locale,
           :per_page,
+          :contact,
           label_ids: []
       )
 

@@ -81,8 +81,8 @@ class Ticket < ActiveRecord::Base
     if !term.nil?
       term.gsub!(/[\\%_]/) { |m| "!#{m}" }
       term = "%#{term.downcase}%"
-      where('LOWER(subject) LIKE ? ESCAPE ? OR LOWER(content) LIKE ? ESCAPE ?',
-          term, '!', term, '!')
+      joins(:user).where('LOWER(subject) LIKE ? ESCAPE ? OR LOWER(content) LIKE ? ESCAPE ? OR LOWER(users.email) LIKE ? ESCAPE ?',
+          term, '!', term, '!', term, '!')
     end
   }
 
