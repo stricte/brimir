@@ -108,6 +108,7 @@ class UsersController < ApplicationController
           :time_zone,
           :locale,
           :per_page,
+          :contact,
           label_ids: []
       )
 
