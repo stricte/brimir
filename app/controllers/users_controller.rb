@@ -20,6 +20,10 @@ class UsersController < ApplicationController
 
   before_filter :load_locales, except: :index
 
+  def stats
+    @user = User.find(params[:id])
+  end
+
   def edit
     @user = User.find(params[:id])
   end
