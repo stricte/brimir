@@ -41,7 +41,6 @@
 
           <p><%= t(:have_access_to_label) %></p>
 
-          <%= f.label :label_ids %>
           <%= f.collection_select :label_ids, @labels, :id, :name, {}, {multiple: true, class: 'select2'} %>
         <% end %>
 
