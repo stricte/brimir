@@ -5,6 +5,7 @@ Brimir::Application.routes.draw do
   resources :users do
     member do
       get :stats
+      get :tickets
     end
   end
 
