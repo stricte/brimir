@@ -41,8 +41,10 @@ class Ticket < ActiveRecord::Base
   after_create :create_status_change
 
   before_save :set_time_consumed
+  before_save :change_sender
 
   attr_accessor :consumed_days, :consumed_hours, :consumed_minutes
+  attr_accessor :sender
 
   def self.active_labels(status)
     label_ids = where(status: Ticket.statuses[status])
@@ -130,26 +132,31 @@ class Ticket < ActiveRecord::Base
   end
 
   protected
-    def set_time_consumed
-      self.time_consumed = Duration.new(:days => self.consumed_days.to_i, :hours => self.consumed_hours.to_i, :minutes => self.consumed_minutes.to_i).total/60 if self.consumed_days || self.consumed_hours || self.consumed_minutes
-    end
 
-    def create_status_change
+  def change_sender
+    self.from = self.sender if self.sender && self.sender.match(Devise.email_regexp)
+  end
+
+  def set_time_consumed
+    self.time_consumed = Duration.new(:days => self.consumed_days.to_i, :hours => self.consumed_hours.to_i, :minutes => self.consumed_minutes.to_i).total/60 if self.consumed_days || self.consumed_hours || self.consumed_minutes
+  end
+
+  def create_status_change
+    status_changes.create! status: self.status
+  end
+
+  def log_status_change
+
+    if self.changed.include? 'status'
+      previous = status_changes.ordered.last
+
+      unless previous.nil?
+        previous.updated_at = Time.now
+        previous.save
+      end
+
       status_changes.create! status: self.status
     end
-
-    def log_status_change
-
-      if self.changed.include? 'status'
-        previous = status_changes.ordered.last
-
-        unless previous.nil?
-          previous.updated_at = Time.now
-          previous.save
-        end
-
-        status_changes.create! status: self.status
-      end
-    end
+  end
 
 end

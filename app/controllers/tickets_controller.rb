@@ -184,6 +184,7 @@ class TicketsController < ApplicationController
             :consumed_hours,
             :consumed_minutes,
             :notes,
+            :sender,
             attachments_attributes: [
               :file
             ])

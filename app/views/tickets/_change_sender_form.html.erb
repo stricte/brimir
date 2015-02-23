@@ -1,0 +1,13 @@
+<div id="change-sender" class="reveal-modal small" data-reveal>
+  <h3><%= t(:change_sender) %></h3>
+
+  <%= form_for ticket, remote: true, method: :patch do |f| %>
+    <p>
+      <%= f.text_field :sender %>
+    </p>
+    <%= f.submit t(:change), class: 'button' %>
+  <% end %>
+
+
+  <a class="close-reveal-modal">&#215;</a>
+</div>
