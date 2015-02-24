@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223085639) do
+ActiveRecord::Schema.define(version: 20150224115431) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "attachable_id"
@@ -105,6 +105,14 @@ ActiveRecord::Schema.define(version: 20150223085639) do
   end
 
   add_index "status_changes", ["ticket_id"], name: "index_status_changes_on_ticket_id"
+
+  create_table "templates", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.text     "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "tickets", force: :cascade do |t|
     t.string   "subject"

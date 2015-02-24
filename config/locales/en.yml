@@ -14,6 +14,7 @@ en:
   delete: Remove
 
   joyride:
+    templates: Agents can create templates for text fields, i.e. standard responses
     tickets: Anybody can create tickets using this button.
     personal_settings: Set your signature, timezone and other preferences via this menu.
     labels: After adding labels to tickets or users, they will show up here. You can then use them as filters.

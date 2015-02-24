@@ -144,9 +144,15 @@
       selector: 'textarea.tinymce',
       statusbar: false,
       menubar: false,
-      toolbar: 'undo redo | bold italic | bullist numlist | outdent indent removeformat',
+      toolbar: 'undo redo | bold italic | bullist numlist | outdent indent removeformat | template',
       height: 150,
-      plugins: 'autoresize,paste',
+      plugins: 'autoresize,paste,template',
+      template_cdate_classes: "cdate creationdate",
+      template_mdate_classes: "mdate modifieddate",
+      template_selected_content_classes: "selcontent",
+      template_cdate_format: "%m/%d/%Y : %H:%M:%S",
+      template_mdate_format: "%m/%d/%Y : %H:%M:%S",
+      templates: '/templates.json'
     });
 
     jQuery(document).foundation();

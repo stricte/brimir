@@ -1,0 +1,38 @@
+<div class="row collapse">
+  <div class="medium-12 columns">
+    <div class="panel">
+      <div class="row collapse">
+        <div class="medium-9 columns">
+          <h4 class="filter-title no-m pts"><%= t(:templates) %></h4>
+        </div>
+        <div class="medium-3 columns">
+          <%= link_to t(:new_template), new_template_path, class: 'no-m tiny button right radius' %>
+        </div>
+      </div>
+    </div>
+
+
+    <table class="full">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Content</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @templates.each do |template| %>
+          <tr>
+            <td><%= link_to template.title, template %></td>
+            <td><%= template.description %></td>
+            <td><%= truncate(template.content, length: 30) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="pagination-centered">
+      <%= will_paginate @templates %>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,7 @@
 Brimir::Application.routes.draw do
 
+  resources :templates
+
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth' }
 
   resources :users do

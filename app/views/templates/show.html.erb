@@ -1,0 +1,37 @@
+<div class="panel">
+  <div class="row collapse">
+    <div class="medium-12 columns">
+      <h4 class="no-m pts pbs"><%= t(:show_template) %></h4>
+    </div>
+  </div>
+</div>
+
+<div class="row mt mb">
+  <div class="medium-6 columns">
+    <p>
+    <strong>Title:</strong>
+    <%= @template.title %>
+    </p>
+
+    <p>
+    <strong>Description:</strong>
+    <%= @template.description %>
+    </p>
+
+    <p>
+    <strong>Content:</strong>
+    <%= @template.content %>
+    </p>
+    <p>
+    <div class="button-bar">
+      <ul class="button-group">
+        <li><%= link_to 'Edit', edit_template_path(@template), class: 'no-m tiny button right radius' %></li>
+        <li><%= link_to 'Back', templates_path, class: 'no-m tiny button right radius' %></li>
+      </ul>
+      <ul class="button-group">
+        <li><%= link_to 'Destroy', @template, method: :delete, data: { confirm: 'Are you sure?' }, class: 'no-m tiny button right radius alert'%></li>
+      </ul>
+    </div>
+    </p>
+  </div>
+</div>
