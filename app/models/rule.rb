@@ -20,7 +20,7 @@ class Rule < ActiveRecord::Base
 
   enum filter_operation: [:contains]
   enum action_operation: [:assign_label, :notify_user, :change_status,
-                          :change_priority, :assign_user]
+                          :change_priority, :assign_user, :post_to_slack]
 
   def filter(ticket)
 
@@ -59,6 +59,9 @@ class Rule < ActiveRecord::Base
         ticket.save
       end
 
+    elsif action_operation == 'post_to_slack'
+      notifier = Slack::Notifier.new action_value, username: 'Brimir'
+      notifier.ping I18n.t(:slack_new_ticket_info, ticket_subject: ticket.subject, ticket_from: ticket.user.email), http_options: { open_timeout: 5 }
     end
   end
 

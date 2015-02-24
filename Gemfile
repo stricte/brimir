@@ -90,3 +90,6 @@ gem 'ruby-duration'
 
 # Autosize for textareas
 gem 'autosize-rails'
+
+# 'slack-notifier'
+gem 'slack-notifier'

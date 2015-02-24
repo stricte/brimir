@@ -206,6 +206,9 @@ en:
   email_address_added: Email address added
   email_address_removed: Email address removed
 
+# slack
+  slack_new_ticket_info: 'There is new ticket in Brimir "%{ticket_subject}" sent by %{ticket_from}. Check details on Brimir'
+
   activerecord:
     attributes:
       user:
@@ -241,6 +244,7 @@ en:
           change_status: change status to
           change_priority: change priority to
           assign_user: assign to
+          post_to_slack: post to slack
         action_value: Parameter for action
 
       email_address:
