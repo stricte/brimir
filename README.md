@@ -10,6 +10,7 @@ Major fork changes
 2. Added possibility to change sender for ticket (in case that someone sent request to our private email and we do not have redirect functionality in our email client)
 3. Added simple templates support (Based on TinyMCE plugin ans stored in db)
 4. Added consumed_time attribute for ticket (we want to know how long we have been working on that ticket)
+5. Added pure Slack integration through rules functionality
 
 Installation
 ------------
