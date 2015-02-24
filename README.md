@@ -3,6 +3,14 @@ Brimir [![Build Status](https://travis-ci.org/ivaldi/brimir.png)](https://travis
 [Brimir](http://getbrimir.com/) is a simple helpdesk system that can be used to handle support requests
 via incoming email. Brimir is currently used in production at [Ivaldi](http://ivaldi.nl/).
 
+Major fork changes
+------------
+
+1. Added private notes for tickets (simple, single textarea in ticket context visible only for agents)
+2. Added possibility to change sender for ticket (in case that someone sent request to our private email and we do not have redirect functionality in our email client)
+3. Added simple templates support (Based on TinyMCE plugin ans stored in db)
+4. Added consumed_time attribute for ticket (we want to know how long we have been working on that ticket)
+
 Installation
 ------------
 Brimir is a rather simple Ruby on Rails application. The only difficulty in setting things up is how to get incoming email to work. See the next section for details.
