@@ -1,0 +1,278 @@
+pl:
+  language_name: 'polski'
+# layouts/application
+  new_ticket: 'Nowe zgłoszenie'
+  inbox: 'Skrzynka odbiorcza'
+  mine: 'Moje'
+  waiting: 'Oczekujące'
+  closed_tickets: 'Zamknięte'
+  trashed: 'Usunięte'
+  users: 'Użytkownicy'
+  rules: 'Reguły'
+  personal_settings: 'Ustawienie osobiste'
+  sign_out: 'Wyloguj'
+  delete: 'Usuń'
+  agent_stats: 'Statystyki'
+  back: 'Wstecz'
+  change_sender: 'Zmień nadawcę'
+  new_template: 'Nowy szablon'
+  show_template: 'Szczegóły szablonu'
+  templates: 'Szablony'
+  tickets_consumed_time_sum: 'Czas zużyty na zgłoszenia'
+  tickets_count: 'Ilość zgłoszeń'
+  tickets_labels: 'Etykiety zgłoszeń'
+  user_tickets: 'Zgłoszenia użytkownika'
+
+  joyride:
+    templates: 'Agenci mogą tworzyć szablony odpowiedzi do wszystkich pól tekstowych.'
+    tickets: 'Każdy może utworzyć zgłoszenie za pomocą tego przycisku.'
+    personal_settings: 'Tutaj możesz zmodyfikować osobiste ustawienia (strefa czasowa, podpis, itp.).'
+    labels: 'Wszystkie utworzone etykiety będą widoczne tutaj. Możesz za ich pomocą filtrować zgłoszenia.'
+    rules: 'Tutaj możesz tworzyć automatyczne reguły dla nowych zgłoszeń (przypisywać agentów, wysyłać powiadomienia, itp.).'
+    users: 'W tym miejscu można zarządzać użytkownikami serwisu.'
+    final: 'Dziękujemy za używanie Brimira.'
+    next: 'Następny'
+    previous: 'Poprzedni'
+    end: 'Koniec'
+
+# devise/sessions/new
+  sign_in: 'Zaloguj się'
+
+# devise/shared/links
+  forgot_password: 'Zapomniałeś hasła?'
+
+# devise/passwords/new
+  send_instructions: 'Wyślij mi instrukcje'
+
+# devise/passwords/edit
+  change_password: 'Zmień hasło'
+  new_password: 'Nowe hasło'
+  new_password_confirmation: 'Potwierdź nowe hasło'
+
+# devise/mailer/reset_password_instructions
+  hello: 'Witaj'
+  someone_requested_link: 'Zażądano linku do zmiany hasła Twojego konta. Kliknij go aby uruchomić procedurę.'
+  ignore_if_not_requested: 'Jeżeli to nie Ty zainicjowałeś procedurę zmiany hasła, po prostu zignoruj tą wiadomość.'
+  password_wont_change_without_opening_link: 'Twoje hasło nie zostanie zmienione dopóki sam tego nie zrobisz wypełniając formularz znajdujący się pod tym linkiem.'
+
+# tickets/index
+  count_tickets:
+    one: '%{count} zgłoszenie'
+    many: '%{count} zgłoszeń'
+    few: '%{count} zgłoszenia'
+    other: '%{count} zgłoszeń'
+  count_tickets_containing:
+    one: '%{count} zgłoszenie zawierające'
+    many: '%{count} zgłoszeń zawierających'
+    few: '%{count} zgłoszenia zawierające'
+    other: '%{count} zgłoszeń'
+  priority: 'Priorytet'
+  replies: 'odpowiedzi'
+  no_subject: 'Brak tytułu'
+  unassigned: 'Nieprzypisany'
+  no_tickets_found: 'Nie znaleziono zgłoszeń.'
+  search: 'Szukaj'
+  minutes: 'minuty'
+  are_you_sure_empty_trash: 'Usunąć wszystkie zgłoszenia w koszu?'
+
+# tickets/show
+  add: 'Dodaj'
+  ticket_by_at: 'Od %{email} wysłany %{at}'
+  no_content: 'Brak zawartości'
+  ticket_id: 'Numer zgłoszenia'
+  status: 'Status'
+  assignee: 'Przypisany'
+  num_replies:
+    one: '%{count} odpowiedź'
+    few: '%{count} odpowiedzi'
+    many: '%{count} odpowiedzi'
+    other: '%{count} odpowiedzi'
+  ago: 'temu'
+  high: 'Wysoki'
+  medium: 'Średni'
+  low: 'Niski'
+  unknown: 'Niezdefiniowany'
+  open: 'Otwarty'
+  closed: 'Zamknięty'
+  deleted: 'Usunięty'
+  labels: 'Etykiety'
+  label_name: 'Nazwa etykiety'
+  notification_sent_to: 'Powiadomienie zostało wysłane do następujących odbiorców:'
+  no_notifications_sent: 'Żadne powiadomienie nie zostało wysłane'
+  minutes: 'Minut'
+  days: 'Dni'
+  hours: 'Godzin'
+  time_consumed: 'Czas zużyty'
+  notes: 'Notatki'
+
+# tickets/_change_priority_form
+  change: 'Zmień'
+  change_priority: 'Zmień priorytet'
+
+# tickets/_change_status_form
+  change_status: 'Zmień status'
+
+# tickets/_change_assignee_form
+  change_assignee: 'Zmień przypisanie'
+  assign: 'Przypisz'
+
+# replies/new
+  add_reply: 'Dodaj odpowiedź'
+
+# replies/_form
+  reply: 'Odpowiedz'
+  attach_files: 'Załącz pliki'
+  attach_file: 'Załącz plik'
+  send_reply: 'Wyślij odpowiedź'
+  on_date_author_wrote: 'Dnia %{date}, %{author} napisał:'
+  notification_will_be_sent_to: 'Powiadomienie zostanie wysłane do:'
+
+# ticket_mailer/notify_assigned.text.erb
+  ticket_assigned: 'Zgłoszenie przypisane do Ciebie'
+
+# ticket_mailer/notify_priority_changed.text.erb
+  ticket_priority_changed: 'Priorytet zgłoszenia został zmieniony'
+
+# ticket_mailer/notify_status_changed.text.erb
+  tickets_status_modified: 'Zmieniono status zgłoszenia'
+
+# notification_mailer/new_ticket
+  view_new_ticket: 'Zobacz nowe zgłoszenie'
+# notification_mailer/new_reply
+  new_reply: 'Nowa odpowiedź'
+  view_new_reply: 'Zobacz nową odpowiedź'
+
+# attachments/_attachment
+  download: 'pobierz'
+
+# users/new
+  new_user: 'Nowy użytkownik'
+
+# users/edit
+  edit_user: 'Edytuj użytkownika'
+  omniauth_connect_title: 'Zaloguj się używając Google'
+  omniauth_connect_text: 'Aktywuj usługę logowania za pomocą konta Google. Będziesz mógł użyć "Sign in with Google" jako alternatywy dla metody opartej o login i hasło.'
+  omniauth_connect_google_text: 'Połącz za pomocą Google'
+
+# users/index
+  email: 'Email'
+  role: 'Rola'
+  agent: 'Agent'
+  customer: 'Klient'
+
+# users/_form
+  account_settings: 'Ustawienia konta'
+  only_fill_in_passwords_when_modifying: 'Wypełnij tylko wtedy gdy chcesz zmienić hasło.'
+  user_is_an_agent: 'Ten użytkownik jest agentem.'
+  receive_new_ticket_notifications: 'Otrzymuj powiadomienia dla nowych zgłoszeń.'
+  email_settings: 'Ustawienia email.'
+  save: 'Zapisz'
+  access_control: 'Kontrola dostępu.'
+  have_access_to_label: 'Użytkownik ma dostęp do wszystkich zgłoszeń z poniższymi etykietami.'
+
+# controllers/attachments
+  file_not_found: 'Nie znaleziono pliku.'
+
+# controllers/users
+  settings_saved: 'Ustawienia zapisane.'
+  user_added: 'Użytkownik dodany.'
+
+# controllers/tickets
+  ticket_added: 'Zgłoszenie dodane.'
+  ticket_updated: 'Zgłoszenie zaktualizowane.'
+
+# controllers/tickets/deleted
+  trash_emptied: 'Kosz został opróżniony.'
+
+# controllers/replies
+  reply_added: 'Odowiedź została dodana.'
+
+# controllers/omniauth
+  already_linked_accounts: 'Już połączony z kontem Google.'
+  successfully_linked_account: 'Pomyślnie połączono z kontem Google.'
+  not_linked_account_cant_login: 'Żaden z użytkowników nie aktywował tej usługi. W pierwszej kolejności należy dokonać aktywacji na stronie ustawień osobistych.'
+  third_party_failure: 'Błąd podczas identyfikacji. Czy aktywowałeś "Contacts API" oraz "Google+ API" poprzez mechanizm konsoli Google?'
+
+# user/sign_in (omniauth)
+  omniauth_sign_in_title: 'Alternatywne metody identyfikacji'
+  omniauth_sign_in_google: 'Google'
+
+# rules/index
+  new_rule: 'Nowa reguła'
+
+# rules/edit
+  edit_rule: 'Edytuj regułę'
+  delete_rule: 'Usuń regułę'
+  are_you_sure: 'Na pewno?'
+
+# controllers/rules
+  rule_added: 'Reguła dodana'
+  rule_modified: 'Reguła zaktualizowana'
+  rule_deleted: 'Reguła usunięta'
+
+# email_addresses/index
+  new_email_address: 'Nowy adres email dla wiadomości wychodzących'
+  email_addresses: 'Adres email dla wiadomości wychodzących'
+
+# email_addresses/new
+  verification_mail_will_be_sent: 'Upewnij się, że ten adres email jest skonfigurowany poprawnie (wiadomości są przekierowywane do Brimir). Po dodaniu adresu zostanie wysłana wiadomość weryfikacyjna. Tylko zweryfikowany adres email może być użyty jako wychodzący.'
+  mark_spam_spf: 'Jeżeli serwer pocztowy Brimir nie zostanie dodany do rekordu SPF w DNS, wiadomości wysyłane przez niego mogą zostać uznane za spam.'
+
+# controllers/email_addresses
+  email_address_added: 'Adres email został dodany.'
+  email_address_removed: 'Adres email został usunięty.'
+
+# slack
+  slack_new_ticket_info: 'Utworzono nowe zgłoszenie: "%{ticket_subject}" wysłane przez %{ticket_from}. Sprawdź szczegóły logując się do Brmira'
+
+  activerecord:
+    models:
+      attachment: 'Załącznik'
+      email_address: 'Adres email'
+      label: 'Etykieta'
+      reply: 'Odpowiedź'
+      rule: 'Reguła'
+      template: 'Szablon'
+      ticket: 'Zgłoszenie'
+      user: 'Użytkownik'
+    attributes:
+      user:
+        email: 'Email'
+        password: 'Hasło'
+        password_confirmation: 'Potwierdzenie hasła'
+        signature: 'Podpis'
+        remember_me: 'Pamiętaj mnie'
+        label_ids: 'Etykiety'
+        locale: 'Język'
+        time_zone: 'Strefa czasowa'
+        per_page: 'Zgłoszeń na stronie'
+
+      ticket:
+        from: 'Z adresu'
+        subject: 'Tytuł'
+        content: 'Zawartość'
+        status: 'Status'
+        priority: 'Priorytet'
+        assignee_id: 'Przypisany'
+        created_at: 'Utworzony'
+
+      rule:
+        filter_field: 'Pole'
+        filter_operation: 'Operator'
+        filter_operations:
+          contains: 'zawiera'
+        filter_value: 'Wartość'
+        action_operation: 'Akcja do wykonania'
+        action_operations:
+          assign_label: 'przypisz etykietę'
+          notify_user: 'wyślij powiadomienie do'
+          change_status: 'zmień status na'
+          change_priority: 'zmień priorytet na'
+          assign_user: 'przypisz do'
+          post_to_slack: 'wyślij do slacka'
+        action_value: 'Parametr akcji'
+
+      email_address:
+        email: 'Adres email'
+        default: 'Użyj jako domyślnego adresu email dla wiadomości wychodzących'
+        verification_token: 'Zweryfikowany'
