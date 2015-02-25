@@ -78,7 +78,7 @@ pl:
 # tickets/show
   add: 'Dodaj'
   ticket_by_at: 'Od %{email} wysłany %{at}'
-  no_content: 'Brak zawartości'
+  no_content: 'Brak treści'
   ticket_id: 'Numer zgłoszenia'
   status: 'Status'
   assignee: 'Przypisany'
@@ -92,9 +92,9 @@ pl:
   medium: 'Średni'
   low: 'Niski'
   unknown: 'Niezdefiniowany'
-  open: 'Otwarty'
-  closed: 'Zamknięty'
-  deleted: 'Usunięty'
+  open: 'Otwarte'
+  closed: 'Zamknięte'
+  deleted: 'Usunięte'
   labels: 'Etykiety'
   label_name: 'Nazwa etykiety'
   notification_sent_to: 'Powiadomienie zostało wysłane do następujących odbiorców:'
@@ -246,6 +246,7 @@ pl:
         locale: 'Język'
         time_zone: 'Strefa czasowa'
         per_page: 'Zgłoszeń na stronie'
+        contact: 'Dane kontaktowe'
 
       ticket:
         from: 'Z adresu'
@@ -255,6 +256,10 @@ pl:
         priority: 'Priorytet'
         assignee_id: 'Przypisany'
         created_at: 'Utworzony'
+        sender: 'Nadawca (email)'
+        consumed_days: 'Dni'
+        consumed_minutes: 'Minuty'
+        consumed_hours: 'Godziny'
 
       rule:
         filter_field: 'Pole'
