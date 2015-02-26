@@ -2,17 +2,13 @@ class TemplatesController < ApplicationController
 
   load_and_authorize_resource :template
 
-  before_action :set_template, only: [:show, :edit, :update, :destroy]
+  before_action :set_template, only: [:edit, :update, :destroy]
 
   respond_to :html, :json
 
   def index
     @templates = Template.paginate(page: params[:page]).all
     respond_with(@templates)
-  end
-
-  def show
-    respond_with(@template)
   end
 
   def new
@@ -25,13 +21,19 @@ class TemplatesController < ApplicationController
 
   def create
     @template = Template.new(template_params)
-    @template.save
-    respond_with(@template)
+    if @template.save
+      redirect_to templates_path, notice: t(:template_created)
+    else
+      render :new
+    end
   end
 
   def update
-    @template.update(template_params)
-    respond_with(@template)
+    if @template.update(template_params)
+      redirect_to templates_path, notice: t(:template_modified)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -40,11 +42,11 @@ class TemplatesController < ApplicationController
   end
 
   private
-    def set_template
-      @template = Template.find(params[:id])
-    end
+  def set_template
+    @template = Template.find(params[:id])
+  end
 
-    def template_params
-      params.require(:template).permit(:title, :description, :content)
-    end
+  def template_params
+    params.require(:template).permit(:title, :description, :content)
+  end
 end

@@ -15,18 +15,25 @@
     <table class="full">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Content</th>
+          <th><%= ::Template.human_attribute_name :title %></th>
+          <th><%= ::Template.human_attribute_name :description %></th>
+          <th><%= ::Template.human_attribute_name :content %></th>
+          <th></th>
         </tr>
       </thead>
 
       <tbody>
         <% @templates.each do |template| %>
           <tr>
-            <td><%= link_to template.title, template %></td>
+            <td><%= link_to template.title, edit_template_path(template) %></td>
             <td><%= template.description %></td>
             <td><%= truncate(template.content, length: 30) %></td>
+            <td>
+              <%= link_to template_path(template), method: :delete,
+                'data-confirm' => t(:are_you_sure) do %>
+                <%= fa_icon 'trash' %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

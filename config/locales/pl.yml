@@ -210,6 +210,10 @@ pl:
   rule_modified: 'Reguła zaktualizowana'
   rule_deleted: 'Reguła usunięta'
 
+# controllers/templates
+  template_modified: 'Szablon zaktualizowany'
+  template_created: 'Szablon dodany'
+
 # email_addresses/index
   new_email_address: 'Nowy adres email dla wiadomości wychodzących'
   email_addresses: 'Adres email dla wiadomości wychodzących'
@@ -281,3 +285,7 @@ pl:
         email: 'Adres email'
         default: 'Użyj jako domyślnego adresu email dla wiadomości wychodzących'
         verification_token: 'Zweryfikowany'
+      template:
+        title: 'Tytuł'
+        content: 'Treść'
+        description: 'Opis'

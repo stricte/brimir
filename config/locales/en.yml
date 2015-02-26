@@ -194,6 +194,10 @@ en:
   rule_modified: Rule modified
   rule_deleted: Rule deleted
 
+# controllers/templates
+  template_modified: Template modified
+  template_created: Template added
+
 # email_addresses/index
   new_email_address: New outgoing email address
   email_addresses: Email addresses for outgoing email
