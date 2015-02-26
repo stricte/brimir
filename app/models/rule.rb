@@ -23,14 +23,13 @@ class Rule < ActiveRecord::Base
                           :change_priority, :assign_user, :post_to_slack]
 
   def filter(ticket)
-
     if ticket.respond_to?(filter_field)
       value = ticket.send(filter_field)
     else
       value = ticket.attributes[filter_field]
     end
 
-    value.include?(filter_value) if filter_operation == 'contains'
+    (filter_value == '*' || value.include?(filter_value)) if filter_operation == 'contains'
   end
 
   def execute(ticket)

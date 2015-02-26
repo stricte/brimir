@@ -11,7 +11,7 @@
 
       <%= f.collection_select(:filter_operation, t('activerecord.attributes.rule.filter_operations'), :first, :last) %>
 
-      <%= f.text_field :filter_value %>
+      <%= f.text_field :filter_value, value: @rule.filter_value, placeholder: t('asterisk_can_be_used', default: 'Asterisk can be used')  %>
 
       <%= f.collection_select(:action_operation, t('activerecord.attributes.rule.action_operations'), :first, :last) %>
 
