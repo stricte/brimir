@@ -79,19 +79,24 @@
           <% else %>
             <% if ticket.assignee %>
               <i class="fa fa-user"></i> <%= ticket.assignee.email %>
-            <% else %>
-              <em><%= t(:unassigned) %></em>
-            <% end %>
-          <% end %>
-        </td>
-        <td class="nowrap text-right text-secondary">
-          <% if can? :update, ticket %>
-            <a href="#" data-set-time-consumed="<%= ticket.time_consumed_as_duration.format('%d-%h-%m')%>">
-              <span class=""><%= distance_of_time_in_words(ticket.time_consumed*60) %></span>
-            </a>
           <% else %>
-            <span class=""><%= distance_of_time_in_words(ticket.time_consumed*60) %></span>
+            <em><%= t(:unassigned) %></em>
           <% end %>
+        <% end %>
+      </td>
+      <td class="nowrap text-right text-secondary">
+        <% if can? :update, ticket %>
+          <a href="#" data-set-time-consumed="<%= ticket.time_consumed_as_duration.format('%d-%h-%m')%>">
+            <span class=""><%= distance_of_time_in_words(ticket.time_consumed*60) %></span>
+          </a>
+        <% else %>
+          <span class=""><%= distance_of_time_in_words(ticket.time_consumed*60) %></span>
+        <% end %>
+      </td>
+      <td style="text-align: right;">
+        <%= link_to closed_ticket_path(ticket), :method => :put, 'data-confirm' => t(:are_you_sure) do %>
+          <%= fa_icon 'check' %>
+        <% end if can?(:update, ticket) && !['closed', 'deleted'].include?(ticket.status) %>
         </td>
       </tr>
     <% end %>
