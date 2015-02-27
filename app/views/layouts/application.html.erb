@@ -41,6 +41,10 @@
             <% if can? :manage, Template %>
               <li id="joyride-templates"><a href="<%= templates_path %>"><i class="fa fa-file-text fa-fw"></i></a></li>
             <% end %>
+            <% if can? :manage, Group %>
+              <li id="joyride-groups"><a href="<%= groups_path %>"><i class="fa fa-folder fa-fw"></i></a></li>
+            <% end %>
+
             <li class="has-dropdown" id="joyride-settings">
               <a href="#"><%= current_user.email %></a>
               <ul class="dropdown">
@@ -195,6 +199,10 @@
         <li data-id="joyride-templates" data-button="<%= t('joyride.next') %>" data-prev-text="<%= t('joyride.previous') %>" data-options="tip_location: right;">
           <h4><%= t(:templates) %></h4>
           <p><%= t('joyride.templates') %></p>
+        </li>
+        <li data-id="joyride-groups" data-button="<%= t('joyride.next') %>" data-prev-text="<%= t('joyride.previous') %>" data-options="tip_location: right;">
+          <h4><%= t(:groups) %></h4>
+          <p><%= t('joyride.groups') %></p>
         </li>
         <li data-button="<%= t('joyride.end') %>" data-prev-text="<%= t('joyride.previous') %>">
           <h4><%= t('joyride.final') %></h4>

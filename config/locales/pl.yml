@@ -8,6 +8,7 @@ pl:
   closed_tickets: 'Zamknięte'
   trashed: 'Usunięte'
   users: 'Użytkownicy'
+  groups: 'Grupy'
   rules: 'Reguły'
   personal_settings: 'Ustawienie osobiste'
   sign_out: 'Wyloguj'
@@ -17,6 +18,8 @@ pl:
   change_sender: 'Zmień nadawcę'
   new_template: 'Nowy szablon'
   show_template: 'Szczegóły szablonu'
+  new_group: 'Nowa grupa'
+  edit_group: 'Edycja grupy'
   templates: 'Szablony'
   tickets_consumed_time_sum: 'Czas zużyty na zgłoszenia'
   tickets_count: 'Ilość zgłoszeń'
@@ -24,6 +27,7 @@ pl:
   user_tickets: 'Zgłoszenia użytkownika'
 
   joyride:
+    groups: 'Grupy pozwalają na kategoryzowanie zgłoszeń. Użytkownicy mogą należeć do jednej lub więcej grup.'
     templates: 'Agenci mogą tworzyć szablony odpowiedzi do wszystkich pól tekstowych.'
     tickets: 'Każdy może utworzyć zgłoszenie za pomocą tego przycisku.'
     personal_settings: 'Tutaj możesz zmodyfikować osobiste ustawienia (strefa czasowa, podpis, itp.).'
@@ -239,6 +243,7 @@ pl:
       template: 'Szablon'
       ticket: 'Zgłoszenie'
       user: 'Użytkownik'
+      group: 'Grupa'
     attributes:
       user:
         email: 'Email'
@@ -285,7 +290,13 @@ pl:
         email: 'Adres email'
         default: 'Użyj jako domyślnego adresu email dla wiadomości wychodzących'
         verification_token: 'Zweryfikowany'
+
       template:
         title: 'Tytuł'
         content: 'Treść'
         description: 'Opis'
+
+      group:
+        name: 'Nazwa'
+        description: 'Opis'
+        default: 'Czy domyślna'

@@ -9,11 +9,13 @@ en:
   trashed: Trashed
   users: Users
   rules: Rules
+  groups: Groups
   personal_settings: Personal settings
   sign_out: Sign out
   delete: Remove
 
   joyride:
+    groups: Tickets and users can be organized into groups for better management.
     templates: Agents can create templates for text fields, i.e. standard responses
     tickets: Anybody can create tickets using this button.
     personal_settings: Set your signature, timezone and other preferences via this menu.
@@ -213,6 +215,10 @@ en:
 # slack
   slack_new_ticket_info: 'There is new ticket in Brimir "%{ticket_subject}" sent by %{ticket_from}. Check details on Brimir'
 
+# controllers/groups
+  new_group: New group
+  edit_group: Edit group
+
   activerecord:
     attributes:
       user:
@@ -255,3 +261,7 @@ en:
         email: Email address
         default: Use as default outgoing mail address
         verification_token: Verified
+      group:
+        name: Name
+        description: Description
+        default: Is default group

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224115431) do
+ActiveRecord::Schema.define(version: 20150227095446) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "attachable_id"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 20150224115431) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "verification_token"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "default",     default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "identities", force: :cascade do |t|
