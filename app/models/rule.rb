@@ -64,9 +64,11 @@ class Rule < ActiveRecord::Base
     end
   end
 
-  def self.apply_all(ticket)
-    Rule.all.each do |rule|
-      rule.execute(ticket) if rule.filter(ticket)
+  def self.apply_all(ticket, delayed = true)
+    if delayed
+      RuleExecutorJob.perform_later(ticket)
+    else
+      RuleExecutorJob.perform_now(ticket)
     end
   end
 end
