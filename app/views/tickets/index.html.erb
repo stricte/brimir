@@ -93,6 +93,15 @@
           <span class=""><%= distance_of_time_in_words(ticket.time_consumed*60) %></span>
         <% end %>
       </td>
+      <td class="nowrap text-right text-secondary">
+        <% if can? :update, ticket %>
+          <a href="#" data-set-group="<%= ticket.group_id %>">
+            <span class=""><%= ticket.group.try(:name) || t(:undefined) %></span>
+          </a>
+        <% else %>
+          <span class=""><%= ticket.group.try(:name) || t(:undefined) %></span>
+        <% end %>
+      </td>
       <td style="text-align: right;">
         <%= link_to closed_ticket_path(ticket), :method => :put, 'data-confirm' => t(:are_you_sure) do %>
           <%= fa_icon 'check' %>
@@ -120,5 +129,6 @@
 
   <%= render 'change_assignee_form', { ticket: Ticket.new } %>
   <%= render 'set_time_consumed_form', { ticket: Ticket.new } %>
+  <%= render 'change_group_form', { ticket: Ticket.new } %>
 
 <% end %>

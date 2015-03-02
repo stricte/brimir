@@ -13,6 +13,9 @@ en:
   personal_settings: Personal settings
   sign_out: Sign out
   delete: Remove
+  undefined: Undefined
+  group: Group
+  change_group: Change group
 
   joyride:
     groups: Tickets and users can be organized into groups for better management.
@@ -240,6 +243,7 @@ en:
         priority: Priority
         assignee_id: Assignee
         created_at: Created at
+        group_id: Group
 
       rule:
         filter_field: Field

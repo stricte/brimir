@@ -25,6 +25,9 @@ pl:
   tickets_count: 'Ilość zgłoszeń'
   tickets_labels: 'Etykiety zgłoszeń'
   user_tickets: 'Zgłoszenia użytkownika'
+  undefined: 'Niezdefiniowane'
+  group: 'Grupa'
+  change_group: 'Zmień grupę'
 
   joyride:
     groups: 'Grupy pozwalają na kategoryzowanie zgłoszeń. Użytkownicy mogą należeć do jednej lub więcej grup.'
@@ -269,6 +272,7 @@ pl:
         consumed_days: 'Dni'
         consumed_minutes: 'Minuty'
         consumed_hours: 'Godziny'
+        group_id: 'Grupa'
 
       rule:
         filter_field: 'Pole'

@@ -21,6 +21,7 @@ class Ticket < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :assignee, class_name: 'User'
+  belongs_to :group
 
   has_many :attachments, as: :attachable, dependent: :destroy
   accepts_nested_attributes_for :attachments, allow_destroy: true
@@ -42,6 +43,7 @@ class Ticket < ActiveRecord::Base
 
   before_save :set_time_consumed
   before_save :change_sender
+  before_create :set_default_group
 
   attr_accessor :consumed_days, :consumed_hours, :consumed_minutes
   attr_accessor :sender
@@ -132,6 +134,11 @@ class Ticket < ActiveRecord::Base
   end
 
   protected
+
+  def set_default_group
+    default_group = Group.where(default: true).first
+    self.group_id = default_group.id if default_group
+  end
 
   def change_sender
     self.from = self.sender if self.sender && self.sender.match(Devise.email_regexp)

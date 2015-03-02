@@ -61,6 +61,23 @@ jQuery(function() {
     dialog.foundation('reveal','open');
   });
 
+  jQuery('[data-set-group]').click(function(e) {
+    e.preventDefault();
+
+    var elem = jQuery(this);
+    var dialog = jQuery('#change_group');
+
+    var groupSelect = dialog.find('form select#ticket_group_id');
+
+    /* set ticket url */
+    dialog.find('form').attr('action', elem.parents('tr').data('ticket-url'));
+
+    groupSelect.select2('val', elem.data('set-group'));
+
+    /* show the dialog */
+    dialog.foundation('reveal','open');
+  });
+
   jQuery('.select2-create').select2({
     width: 'resolve',
     createSearchChoicePosition: 'bottom',
