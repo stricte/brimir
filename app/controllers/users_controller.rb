@@ -33,6 +33,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @groups = Group.all
   end
 
   def update
@@ -106,14 +107,16 @@ class UsersController < ApplicationController
           :locale,
           :per_page,
           :contact,
-          label_ids: []
+          label_ids: [],
+          group_ids: []
       )
 
-      # prevent normal user from changing email and role
+      # prevent normal user from changing email and role and group
       unless current_user.agent?
         attributes.delete(:email)
         attributes.delete(:agent)
         attributes.delete(:label_ids)
+        attributes.delete(:group_ids)
       end
 
       return attributes

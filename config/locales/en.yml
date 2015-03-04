@@ -234,6 +234,7 @@ en:
         locale: Language
         time_zone: Time zone
         per_page: Tickets per page
+        group_ids: Groups
 
       ticket:
         from: From email address

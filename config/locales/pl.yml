@@ -259,6 +259,7 @@ pl:
         time_zone: 'Strefa czasowa'
         per_page: 'Zgłoszeń na stronie'
         contact: 'Dane kontaktowe'
+        group_ids: 'Grupy'
 
       ticket:
         from: 'Z adresu'
