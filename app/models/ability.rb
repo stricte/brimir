@@ -25,15 +25,27 @@ class Ability
     can :create, Attachment
 
     if user.agent?
-
-      can :manage, :all
-
+      agent user
     else
       customer user
     end
   end
 
   protected
+
+  def agent(user)
+    can :manage, Reply, ticket: { assignee_id: user.id }
+    can :manage, Reply, ticket: { group_id: user.group_ids }
+
+    can [:read, :create], Label
+    can :manage, Labeling, labelable_type: 'Ticket', labelable: {assignee_id: user.id}
+    can :manage, Labeling, labelable_type: 'Ticket', labelable: {group_id: user.group_ids}
+    can [:edit, :update], User, id: user.id
+
+    can :manage, Ticket, Ticket.viewable_by(user) do |ticket|
+      ticket.assignee == user || user.group_ids.include?(ticket.group_id)
+    end
+  end
 
   def customer(user)
     # customers can view their own tickets, its replies and attachments
