@@ -24,16 +24,31 @@ class Ability
     can :create, Ticket
     can :create, Attachment
 
-    if user.agent?
-
+    if user.admin?
       can :manage, :all
-
+    elsif user.agent?
+      agent user
     else
       customer user
     end
   end
 
   protected
+
+  def agent(user)
+    can :manage, Reply, ticket: { assignee_id: user.id }
+    can :manage, Reply, ticket: { group_id: user.group_ids }
+
+    can [:read, :create], Label
+    can :manage, ::Template
+    can :manage, Labeling, labelable_type: 'Ticket', labelable: {assignee_id: user.id}
+    can :manage, Labeling, labelable_type: 'Ticket', labelable: {group_id: user.group_ids}
+    can [:edit, :update], User, id: user.id
+
+    can :manage, Ticket, Ticket.viewable_by(user) do |ticket|
+      ticket.assignee == user || (ticket.assignee_id.nil? && ticket.group_id.nil?) || user.group_ids.include?(ticket.group_id)
+    end
+  end
 
   def customer(user)
     # customers can view their own tickets, its replies and attachments

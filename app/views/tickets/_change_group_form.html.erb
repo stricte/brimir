@@ -1,0 +1,13 @@
+<div id="change_group" class="reveal-modal small" data-reveal>
+  <h3><%= t(:change_group) %></h3>
+
+  <%= form_for ticket, remote: true, method: :patch do |f| %>
+    <p>
+    <%= f.collection_select :group_id, @groups, :id, :name, {}, {class: 'select2'} %>
+    </p>
+    <%= f.submit t(:change), class: 'button' %>
+  <% end %>
+
+
+  <a class="close-reveal-modal">&#215;</a>
+</div>

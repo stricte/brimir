@@ -1,0 +1,18 @@
+<%= form_for(@group) do |f| %>
+  <div class="row mt mb">
+    <div class="medium-6 columns">
+      <div class="field">
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.text_area :description, rows: 10 %>
+      </div>
+      <div class="field">
+        <%= f.check_box :default %>
+      </div>
+      <div class="actions">
+        <%= f.submit class: 'button regular radius' %>
+      </div>
+    </div>
+  </div>
+<% end %>

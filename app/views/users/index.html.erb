@@ -23,7 +23,7 @@
         <% @users.each do |user| %>
           <tr>
             <td><%= link_to user.email, edit_user_path(user) %></td>
-            <td><%= (user.agent?) ? t(:agent) : t(:customer) %></td>
+            <td><%= role(user) %></td>
             <td><%= (link_to t(:agent_stats), stats_user_path(user.id), class: 'no-m tiny button right radius') if user.agent? %></td>
           </tr>
         <% end %>

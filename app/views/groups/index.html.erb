@@ -1,0 +1,45 @@
+<div class="row collapse">
+  <div class="medium-12 columns">
+    <div class="panel">
+      <div class="row collapse">
+        <div class="medium-9 columns">
+          <h4 class="filter-title no-m pts"><%= t(:groups) %></h4>
+        </div>
+        <div class="medium-3 columns">
+          <%= link_to t(:new_group), new_group_path, class: 'no-m tiny button right radius' %>
+        </div>
+      </div>
+    </div>
+
+
+    <table class="full">
+      <thead>
+        <tr>
+          <th><%= ::Group.human_attribute_name :name %></th>
+          <th><%= ::Group.human_attribute_name :description %></th>
+          <th><%= ::Group.human_attribute_name :default %></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @groups.each do |group| %>
+          <tr>
+            <td><%= link_to group.name, edit_group_path(group) %></td>
+            <td><%= truncate(group.description, length: 30, separator: ' ') %></td>
+            <td><%= fa_icon 'check' if group.default? %></td>
+            <td>
+              <%= link_to group_path(group), method: :delete,
+                'data-confirm' => t(:are_you_sure) do %>
+                <%= fa_icon 'trash' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="pagination-centered">
+      <%= will_paginate @groups %>
+    </div>
+  </div>
+</div>

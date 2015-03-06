@@ -24,15 +24,14 @@ jQuery(function() {
     var options = dialog.find('form select');
 
     /* set ticket id */
-    dialog.find('form').attr('action',
-      elem.parents('tr').data('ticket-url'));
+    dialog.find('form').attr('action', elem.parents('tr').data('ticket-url'));
 
-      /* select assigned user */
-      options.removeAttr('selected');
-      options.find('[value="' + elem.data('assignee-id') + '"]').attr('selected', 'selected');
+    /* select assigned user */
+    options.removeAttr('selected');
+    options.find('[value="' + elem.data('assignee-id') + '"]').attr('selected', 'selected');
 
-      /* show the dialog */
-      dialog.foundation('reveal','open');
+    /* show the dialog */
+    dialog.foundation('reveal','open');
 
   });
 
@@ -71,8 +70,23 @@ jQuery(function() {
 
     field.val(elem.data('set-deadline'));
 
+    dialog.find('form').attr('action', elem.parents('tr').data('ticket-url'));
+
+    dialog.foundation('reveal','open');
+  });
+
+  jQuery('[data-set-group]').click(function(e) {
+    e.preventDefault();
+
+    var elem = jQuery(this);
+    var dialog = jQuery('#change_group');
+
+    var groupSelect = dialog.find('form select#ticket_group_id');
+
     /* set ticket url */
     dialog.find('form').attr('action', elem.parents('tr').data('ticket-url'));
+
+    groupSelect.select2('val', elem.data('set-group'));
 
     /* show the dialog */
     dialog.foundation('reveal','open');

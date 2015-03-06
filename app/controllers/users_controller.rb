@@ -33,6 +33,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @groups = Group.all
   end
 
   def update
@@ -44,13 +45,14 @@ class UsersController < ApplicationController
       params[:user].delete(:password_confirmation)
     end
 
-    if current_user.agent?
+    if current_user == @user
       params[:user].delete(:agent) # prevent removing own agent permissions
+      params[:user].delete(:admin) # prevent removing own aadmin permissions
     end
 
     if @user.update_attributes(user_params)
 
-      if current_user.agent?
+      if can? :read, User
         redirect_to users_url, notice: I18n::translate(:settings_saved)
       else
         redirect_to tickets_url, notice: I18n::translate(:settings_saved)
@@ -73,7 +75,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to users_url, notice: I18n::translate(:user_added)
+      if can? :read, User
+        redirect_to users_url, notice: I18n::translate(:user_added)
+      else
+        redirect_to tickets_url, notice: I18n::translate(:user_added)
+      end
     else
       render 'new'
     end
@@ -101,19 +107,23 @@ class UsersController < ApplicationController
           :remember_me,
           :signature,
           :agent,
+          :admin,
           :notify,
           :time_zone,
           :locale,
           :per_page,
           :contact,
-          label_ids: []
+          label_ids: [],
+          group_ids: []
       )
 
-      # prevent normal user from changing email and role
-      unless current_user.agent?
+      # prevent normal user from changing email and role and group
+      unless (current_user.agent? || current_user.admin?)
         attributes.delete(:email)
         attributes.delete(:agent)
+        attributes.delete(:admin)
         attributes.delete(:label_ids)
+        attributes.delete(:group_ids)
       end
 
       return attributes

@@ -22,9 +22,15 @@ class User < ActiveRecord::Base
   has_many :replies, dependent: :destroy
   has_many :labelings, as: :labelable, dependent: :destroy
   has_many :labels, through: :labelings
+  has_many :user_groups
+  has_many :groups, through: :user_groups
 
   # identities for omniauth
   has_many :identities
+
+  scope :admins, -> {
+    where(admin: true)
+  }
 
   scope :agents, -> {
     where(agent: true)
@@ -37,6 +43,10 @@ class User < ActiveRecord::Base
   scope :by_email, ->(email) {
     where('LOWER(email) LIKE ?', '%' + email.downcase + '%')
   }
+
+  def customer?
+    !(agent? || admin?)
+  end
 
   def self.agents_to_notify
     User.agents

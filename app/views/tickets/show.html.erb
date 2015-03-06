@@ -139,7 +139,6 @@
           <% end %>
         <% end %>
         </dd>
-
         <dt><%= t(:time_consumed)%></dt>
         <dd>
         <% if can? :update, @ticket %>
@@ -152,7 +151,18 @@
           <%= distance_of_time_in_words(@ticket.time_consumed*60) %>
         <% end %>
         </dd>
-
+        <dt><%= t(:group)%></dt>
+        <dd>
+        <% if can? :update, @ticket %>
+          <a href="#" data-reveal-id="change_group">
+            <span class="time-consumed fa fa-fw fa-folder "></span>
+            <%= @ticket.group.try(:name) || t(:undefined) %>
+          </a>
+        <% else %>
+          <span class="group fa fa-fw fa-folder"></span>
+          <%= @ticket.group.try(:name) || t(:undefined) %>
+        <% end %>
+        </dd>
         <dt><%= t(:deadline)%></dt>
         <dd>
         <% if can? :update, @ticket %>
@@ -203,3 +213,4 @@
 <%= render 'set_time_consumed_form', { ticket: @ticket } %>
 <%= render 'set_deadline_form', { ticket: @ticket } %>
 <%= render 'change_sender_form', { ticket: @ticket } %>
+<%= render 'change_group_form', { ticket: @ticket } %>

@@ -9,11 +9,16 @@ en:
   trashed: Trashed
   users: Users
   rules: Rules
+  groups: Groups
   personal_settings: Personal settings
   sign_out: Sign out
   delete: Remove
+  undefined: Undefined
+  group: Group
+  change_group: Change group
 
   joyride:
+    groups: Tickets and users can be organized into groups for better management.
     templates: Agents can create templates for text fields, i.e. standard responses
     tickets: Anybody can create tickets using this button.
     personal_settings: Set your signature, timezone and other preferences via this menu.
@@ -149,6 +154,7 @@ en:
   account_settings: Account Settings
   only_fill_in_passwords_when_modifying: Only fill in these two fields if you want to modify your password.
   user_is_an_agent: User is an agent
+  user_is_an_admin: User is an admin
   receive_new_ticket_notifications: Receive notifications for new tickets
   email_settings: Email Settings
   save: Save
@@ -214,6 +220,10 @@ en:
 # slack
   slack_new_ticket_info: 'There is new ticket in Brimir "%{ticket_subject}" sent by %{ticket_from}. Check details on Brimir'
 
+# controllers/groups
+  new_group: New group
+  edit_group: Edit group
+
   activerecord:
     attributes:
       user:
@@ -226,6 +236,7 @@ en:
         locale: Language
         time_zone: Time zone
         per_page: Tickets per page
+        group_ids: Groups
 
       ticket:
         from: From email address
@@ -236,6 +247,7 @@ en:
         assignee_id: Assignee
         created_at: Created at
         deadline: Deadline
+        group_id: Group
 
       rule:
         filter_field: Field
@@ -251,9 +263,14 @@ en:
           change_priority: change priority to
           assign_user: assign to
           post_to_slack: post to slack
+          change_group: change group
         action_value: Parameter for action
 
       email_address:
         email: Email address
         default: Use as default outgoing mail address
         verification_token: Verified
+      group:
+        name: Name
+        description: Description
+        default: Is default group

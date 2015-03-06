@@ -8,6 +8,7 @@ pl:
   closed_tickets: 'Zamknięte'
   trashed: 'Usunięte'
   users: 'Użytkownicy'
+  groups: 'Grupy'
   rules: 'Reguły'
   personal_settings: 'Ustawienie osobiste'
   sign_out: 'Wyloguj'
@@ -17,13 +18,19 @@ pl:
   change_sender: 'Zmień nadawcę'
   new_template: 'Nowy szablon'
   show_template: 'Szczegóły szablonu'
+  new_group: 'Nowa grupa'
+  edit_group: 'Edycja grupy'
   templates: 'Szablony'
   tickets_consumed_time_sum: 'Czas zużyty na zgłoszenia'
   tickets_count: 'Ilość zgłoszeń'
   tickets_labels: 'Etykiety zgłoszeń'
   user_tickets: 'Zgłoszenia użytkownika'
+  undefined: 'Niezdefiniowane'
+  group: 'Grupa'
+  change_group: 'Zmień grupę'
 
   joyride:
+    groups: 'Grupy pozwalają na kategoryzowanie zgłoszeń. Użytkownicy mogą należeć do jednej lub więcej grup.'
     templates: 'Agenci mogą tworzyć szablony odpowiedzi do wszystkich pól tekstowych.'
     tickets: 'Każdy może utworzyć zgłoszenie za pomocą tego przycisku.'
     personal_settings: 'Tutaj możesz zmodyfikować osobiste ustawienia (strefa czasowa, podpis, itp.).'
@@ -165,6 +172,7 @@ pl:
   account_settings: 'Ustawienia konta'
   only_fill_in_passwords_when_modifying: 'Wypełnij tylko wtedy gdy chcesz zmienić hasło.'
   user_is_an_agent: 'Ten użytkownik jest agentem.'
+  user_is_an_admin: 'Ten użytkownik jest administratorem'
   receive_new_ticket_notifications: 'Otrzymuj powiadomienia dla nowych zgłoszeń.'
   email_settings: 'Ustawienia email.'
   save: 'Zapisz'
@@ -240,6 +248,7 @@ pl:
       template: 'Szablon'
       ticket: 'Zgłoszenie'
       user: 'Użytkownik'
+      group: 'Grupa'
     attributes:
       user:
         email: 'Email'
@@ -252,6 +261,7 @@ pl:
         time_zone: 'Strefa czasowa'
         per_page: 'Zgłoszeń na stronie'
         contact: 'Dane kontaktowe'
+        group_ids: 'Grupy'
 
       ticket:
         from: 'Z adresu'
@@ -266,6 +276,7 @@ pl:
         consumed_minutes: 'Minuty'
         consumed_hours: 'Godziny'
         deadline: 'Deadline'
+        group_id: 'Grupa'
 
       rule:
         filter_field: 'Pole'
@@ -281,13 +292,20 @@ pl:
           change_priority: 'zmień priorytet na'
           assign_user: 'przypisz do'
           post_to_slack: 'wyślij do slacka'
+          change_group: 'zmień grupę'
         action_value: 'Parametr akcji'
 
       email_address:
         email: 'Adres email'
         default: 'Użyj jako domyślnego adresu email dla wiadomości wychodzących'
         verification_token: 'Zweryfikowany'
+
       template:
         title: 'Tytuł'
         content: 'Treść'
         description: 'Opis'
+
+      group:
+        name: 'Nazwa'
+        description: 'Opis'
+        default: 'Czy domyślna'
