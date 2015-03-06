@@ -20,7 +20,8 @@ class Rule < ActiveRecord::Base
 
   enum filter_operation: [:contains]
   enum action_operation: [:assign_label, :notify_user, :change_status,
-                          :change_priority, :assign_user, :post_to_slack]
+                          :change_priority, :assign_user, :post_to_slack,
+                          :change_group]
 
   def filter(ticket)
     if ticket.respond_to?(filter_field)
