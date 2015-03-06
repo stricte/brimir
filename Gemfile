@@ -93,3 +93,6 @@ gem 'autosize-rails'
 
 # 'slack-notifier'
 gem 'slack-notifier'
+
+# Foundation datepicker
+gem 'foundation-datetimepicker-rails'

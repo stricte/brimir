@@ -18,6 +18,7 @@
 //= require tickets
 //= require fancybox
 //= require jquery.autosize
+//= require foundation-datetimepicker
 
 (function() {
 
@@ -100,6 +101,8 @@
       });
 
     });
+
+    jQuery('.datetimepicker').fdatetimepicker({format: 'yyyy-mm-dd hh:ii'});
 
     tinyMCE.init({
       autoresize_bottom_margin: 0,

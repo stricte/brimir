@@ -60,6 +60,7 @@ en:
   search: Search
   minutes: minutes
   are_you_sure_empty_trash: Delete all tickets in the trash?
+  change_deadline: Change deadline
 
 # tickets/show
   add: Add
@@ -234,6 +235,7 @@ en:
         priority: Priority
         assignee_id: Assignee
         created_at: Created at
+        deadline: Deadline
 
       rule:
         filter_field: Field

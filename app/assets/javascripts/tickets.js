@@ -61,6 +61,23 @@ jQuery(function() {
     dialog.foundation('reveal','open');
   });
 
+  jQuery('[data-set-deadline]').click(function(e) {
+    e.preventDefault();
+
+    var elem = jQuery(this);
+    var dialog = jQuery('#set-deadline');
+
+    var field = dialog.find('input.datetimepicker');
+
+    field.val(elem.data('set-deadline'));
+
+    /* set ticket url */
+    dialog.find('form').attr('action', elem.parents('tr').data('ticket-url'));
+
+    /* show the dialog */
+    dialog.foundation('reveal','open');
+  });
+
   jQuery('.select2-create').select2({
     width: 'resolve',
     createSearchChoicePosition: 'bottom',

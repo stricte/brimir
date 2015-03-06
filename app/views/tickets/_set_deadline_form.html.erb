@@ -1,0 +1,13 @@
+<div id="set-deadline" class="reveal-modal small" data-reveal>
+  <h3><%= t(:change_deadline) %></h3>
+
+  <%= form_for ticket, remote: true, method: :patch do |f| %>
+    <p>
+    <%= f.text_field :deadline, value: (ticket.deadline ? ticket.deadline.to_s(:timestamp_without_secs) : Time.now.to_s(:timestamp_without_secs)), class: 'datetimepicker', size: 10  %>
+    </p>
+    <br/><br/>
+    <%= f.submit t(:save), class: 'button' %>
+  <% end %>
+
+  <a class="close-reveal-modal">&#215;</a>
+</div>

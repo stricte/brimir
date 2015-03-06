@@ -74,6 +74,7 @@ pl:
   search: 'Szukaj'
   minutes: 'minuty'
   are_you_sure_empty_trash: 'Usunąć wszystkie zgłoszenia w koszu?'
+  change_deadline: 'Zmień deadline'
 
 # tickets/show
   add: 'Dodaj'
@@ -264,6 +265,7 @@ pl:
         consumed_days: 'Dni'
         consumed_minutes: 'Minuty'
         consumed_hours: 'Godziny'
+        deadline: 'Deadline'
 
       rule:
         filter_field: 'Pole'
