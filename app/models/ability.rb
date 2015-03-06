@@ -24,7 +24,9 @@ class Ability
     can :create, Ticket
     can :create, Attachment
 
-    if user.agent?
+    if user.admin?
+      can :manage, :all
+    elsif user.agent?
       agent user
     else
       customer user
@@ -38,12 +40,13 @@ class Ability
     can :manage, Reply, ticket: { group_id: user.group_ids }
 
     can [:read, :create], Label
+    can :manage, ::Template
     can :manage, Labeling, labelable_type: 'Ticket', labelable: {assignee_id: user.id}
     can :manage, Labeling, labelable_type: 'Ticket', labelable: {group_id: user.group_ids}
     can [:edit, :update], User, id: user.id
 
     can :manage, Ticket, Ticket.viewable_by(user) do |ticket|
-      ticket.assignee == user || user.group_ids.include?(ticket.group_id)
+      ticket.assignee == user || (ticket.assignee_id.nil? && ticket.group_id.nil?) || user.group_ids.include?(ticket.group_id)
     end
   end
 

@@ -38,7 +38,7 @@
             <% if can? :manage, User %>
                 <li id="joyride-users"><a href="<%= users_path %>"><i class="fa fa-users fa-fw"></i></a></li>
             <% end %>
-            <% if can? :manage, Template %>
+            <% if can? :manage, ::Template %>
               <li id="joyride-templates"><a href="<%= templates_path %>"><i class="fa fa-file-text fa-fw"></i></a></li>
             <% end %>
             <% if can? :manage, Group %>
@@ -172,7 +172,7 @@
 
     <%= javascript_include_tag 'application' %>
 
-    <% if user_signed_in? && current_user.agent? && current_user.sign_in_count == 1 %>
+    <% if user_signed_in? && !current_user.customer? && current_user.sign_in_count == 1 %>
       <% current_user.sign_in_count += 1 %>
       <% current_user.save %>
       <ol class="joyride-list" data-joyride data-options="expose: true;scroll_speed: 1000;">

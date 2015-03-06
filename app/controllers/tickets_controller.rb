@@ -34,6 +34,7 @@ class TicketsController < ApplicationController
 
   def show
     @agents = User.agents
+    @groups = Group.viewable_by(current_user)
 
     @reply = @ticket.replies.new(user: current_user)
     @reply.set_default_notifications!
@@ -43,6 +44,7 @@ class TicketsController < ApplicationController
 
   def index
     @agents = User.agents
+    @groups = Group.viewable_by(current_user)
 
     params[:status] ||= 'open'
 
@@ -179,7 +181,7 @@ class TicketsController < ApplicationController
 
   protected
     def ticket_params
-      if !current_user.nil? && current_user.agent?
+      if !current_user.nil? && (current_user.agent? || current_user.admin?)
         params.require(:ticket).permit(
             :from,
             :content,

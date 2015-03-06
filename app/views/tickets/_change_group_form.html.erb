@@ -3,7 +3,7 @@
 
   <%= form_for ticket, remote: true, method: :patch do |f| %>
     <p>
-    <%= f.collection_select :group_id, Group.all, :id, :name, {}, {class: 'select2'} %>
+    <%= f.collection_select :group_id, @groups, :id, :name, {}, {class: 'select2'} %>
     </p>
     <%= f.submit t(:change), class: 'button' %>
   <% end %>

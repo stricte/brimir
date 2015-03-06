@@ -94,8 +94,8 @@ class Ticket < ActiveRecord::Base
 
   scope :viewable_by, ->(user) {
     if user.agent?
-      where("group_id IN (?) OR tickets.assignee_id = ?", user.group_ids, user.id)
-    else
+      where("group_id IN (?) OR tickets.assignee_id = ? OR (group_id IS NULL AND tickets.assignee_id IS NULL)", user.group_ids, user.id)
+    elsif user.customer?
       ticket_ids = Labeling.where(label_id: user.label_ids)
           .where(labelable_type: 'Ticket')
           .pluck(:labelable_id)

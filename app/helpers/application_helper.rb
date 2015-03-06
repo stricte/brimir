@@ -16,6 +16,16 @@
 
 # helpers used system wide
 module ApplicationHelper
+  def role(user)
+    if user.admin?
+      t(:admin)
+    elsif user.agent?
+      t(:agent)
+    else
+      t(:customer)
+    end
+  end
+
   def active_elem_if(elem, condition, attributes = {}, &block)
     if condition
       # define class as empty string when no class given

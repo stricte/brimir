@@ -17,6 +17,7 @@
 
       <% if can? :manage, User %>
         <%= f.check_box :agent, label: t(:user_is_an_agent) %>
+        <%= f.check_box :admin, label: t(:user_is_an_admin) %>
       <% end %>
 
       <%= f.select :time_zone, @time_zones %>
@@ -28,7 +29,7 @@
 
       <%= f.text_area :contact%>
 
-      <% if @user.agent? %>
+      <% if can? :manage, UserGroup %>
         <%= f.collection_select :group_ids, @groups, :id, :name, {}, {multiple: true, class: 'select2'} %>
       <% end %>
     </div>
