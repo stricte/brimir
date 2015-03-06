@@ -260,6 +260,7 @@ en:
           change_priority: change priority to
           assign_user: assign to
           post_to_slack: post to slack
+          change_group: change group
         action_value: Parameter for action
 
       email_address:
