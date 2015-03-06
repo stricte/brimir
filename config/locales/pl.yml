@@ -171,6 +171,7 @@ pl:
   account_settings: 'Ustawienia konta'
   only_fill_in_passwords_when_modifying: 'Wypełnij tylko wtedy gdy chcesz zmienić hasło.'
   user_is_an_agent: 'Ten użytkownik jest agentem.'
+  user_is_an_admin: 'Ten użytkownik jest administratorem'
   receive_new_ticket_notifications: 'Otrzymuj powiadomienia dla nowych zgłoszeń.'
   email_settings: 'Ustawienia email.'
   save: 'Zapisz'
