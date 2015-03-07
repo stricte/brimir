@@ -152,7 +152,7 @@ class Ticket < ActiveRecord::Base
 
   def set_default_group
     default_group = Group.where(default: true).first
-    self.group_id = default_group.id if default_group
+    self.group_id = default_group.id if (default_group && self.group_id.nil?)
   end
 
   def change_sender
