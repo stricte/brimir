@@ -82,6 +82,7 @@ pl:
   minutes: 'minuty'
   are_you_sure_empty_trash: 'Usunąć wszystkie zgłoszenia w koszu?'
   change_deadline: 'Zmień deadline'
+  close_ticket: 'Zamknij'
 
 # tickets/show
   add: 'Dodaj'
@@ -277,6 +278,12 @@ pl:
         consumed_hours: 'Godziny'
         deadline: 'Deadline'
         group_id: 'Grupa'
+        assignee: 'Przypisany'
+        replies_count: 'Odpowiedzi'
+        labels_count: 'Etykiety'
+        time_consumed: 'Czas zużyty'
+        deadline: 'Deadline'
+        group: 'Grupa'
 
       rule:
         filter_field: 'Pole'

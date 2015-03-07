@@ -16,6 +16,14 @@
 
 # helpers used system wide
 module ApplicationHelper
+
+  def sortable(column, title = nil)
+    title ||= column.titleize
+    css_class = column == params[:sort] ? "current #{params[:direction]} sort-trigger" : nil
+    direction = column == params[:sort] && params[:direction] == "asc" ? "desc" : "asc"
+    link_to title, {:sort => column, :direction => direction}, {:class => css_class}
+  end
+
   def role(user)
     if user.admin?
       t(:admin)

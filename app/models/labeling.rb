@@ -19,6 +19,7 @@ class Labeling < ActiveRecord::Base
   belongs_to :labelable, polymorphic: true
 
   validates_uniqueness_of :label_id, scope: [:labelable_id, :labelable_type]
+  after_save :update_counters
 
   def initialize(attributes={})
     unless attributes[:label].blank? ||
@@ -31,5 +32,10 @@ class Labeling < ActiveRecord::Base
     end
 
     super(attributes)
+  end
+
+  private
+  def update_counters
+    self.labelable.update_column(:labels_count, self.labelable.labels.count) if self.labelable_type == 'Ticket'
   end
 end

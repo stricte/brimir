@@ -327,3 +327,9 @@ table thead th.title {
 .datetimepicker {
   max-width: 300px !important;
 }
+
+th.current.sort-trigger {
+  -moz-box-shadow: inset 0 -3px 0 0 #2f87c1;
+  -webkit-box-shadow: inset 0 -3px 0 0 #2f87c1;
+  box-shadow: inset 0 -3px 0 0 #2f87c1;
+}

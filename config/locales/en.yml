@@ -248,6 +248,8 @@ en:
         created_at: Created at
         deadline: Deadline
         group_id: Group
+        replies_count: Replies count
+        labels_count: Labels count
 
       rule:
         filter_field: Field

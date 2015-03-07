@@ -27,7 +27,7 @@ class Reply < ActiveRecord::Base
 
   validates :ticket_id, :content, presence: true
 
-  belongs_to :ticket
+  belongs_to :ticket, counter_cache: true
   belongs_to :user
 
   scope :chronologically, -> { order(:id) }

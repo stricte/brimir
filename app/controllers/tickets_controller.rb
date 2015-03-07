@@ -52,7 +52,8 @@ class TicketsController < ApplicationController
       .search(params[:q])
       .by_label_id(params[:label_id])
       .filter_by_assignee_id(params[:assignee_id])
-      .ordered
+
+    @tickets = params[:sort].blank? ? @tickets.ordered : @tickets.sorted(params[:sort], params[:direction])
 
     respond_to do |format|
       format.html do
@@ -180,45 +181,45 @@ class TicketsController < ApplicationController
   end
 
   protected
-    def ticket_params
-      if !current_user.nil? && (current_user.agent? || current_user.admin?)
-        params.require(:ticket).permit(
-            :from,
-            :content,
-            :subject,
-            :status,
-            :assignee_id,
-            :priority,
-            :message_id,
-            :consumed_days,
-            :consumed_hours,
-            :consumed_minutes,
-            :notes,
-            :sender,
-            :deadline,
-            :group_id,
-            attachments_attributes: [
-              :file
-            ])
-      else
-        params.require(:ticket).permit(
-            :from,
-            :content,
-            :subject,
-            :priority,
-            attachments_attributes: [
-              :file
-            ])
-      end
+  def ticket_params
+    if !current_user.nil? && (current_user.agent? || current_user.admin?)
+      params.require(:ticket).permit(
+        :from,
+        :content,
+        :subject,
+        :status,
+        :assignee_id,
+        :priority,
+        :message_id,
+        :consumed_days,
+        :consumed_hours,
+        :consumed_minutes,
+        :notes,
+        :sender,
+        :deadline,
+        :group_id,
+        attachments_attributes: [
+          :file
+        ])
+    else
+      params.require(:ticket).permit(
+        :from,
+        :content,
+        :subject,
+        :priority,
+        attachments_attributes: [
+          :file
+        ])
     end
+  end
 
-    def allow_cors
-      headers['Access-Control-Allow-Origin'] = '*'
-      headers['Access-Control-Allow-Methods'] = 'GET,POST'
-      headers['Access-Control-Allow-Headers'] =
-          %w{Origin Accept Content-Type X-Requested-With X-CSRF-Token}.join(',')
+  def allow_cors
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'GET,POST'
+    headers['Access-Control-Allow-Headers'] =
+      %w{Origin Accept Content-Type X-Requested-With X-CSRF-Token}.join(',')
 
-      head :ok if request.request_method == 'OPTIONS'
-    end
+    head :ok if request.request_method == 'OPTIONS'
+  end
 
 end

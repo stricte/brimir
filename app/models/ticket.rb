@@ -103,6 +103,19 @@ class Ticket < ActiveRecord::Base
     end
   }
 
+  scope :sorted, lambda { |param, direction|
+    parts = param.split('.')
+    direction = direction == 'asc' ? 'asc' : 'desc'
+
+    if parts.count == 1 && Ticket.column_names.include?(parts.first)
+      order(parts.first + ' ' + direction)
+    elsif parts.count > 1
+      attr = parts.pop
+      assoc_hash = parts.reverse.inject({}) { |a, n| { n => a } }
+      includes(assoc_hash).references(assoc_hash).order(attr + ' ' + direction)
+    end
+  }
+
   def set_default_notifications!
     self.notified_user_ids = User.agents_to_notify.pluck(:id)
   end

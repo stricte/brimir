@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150305184048) do
-=======
-ActiveRecord::Schema.define(version: 20150306083225) do
->>>>>>> groups
+ActiveRecord::Schema.define(version: 20150307113737) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "attachable_id"
@@ -141,6 +137,8 @@ ActiveRecord::Schema.define(version: 20150306083225) do
     t.text     "notes"
     t.integer  "group_id"
     t.datetime "deadline"
+    t.integer  "replies_count", default: 0
+    t.integer  "labels_count",  default: 0
   end
 
   add_index "tickets", ["assignee_id"], name: "index_tickets_on_assignee_id"

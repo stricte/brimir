@@ -40,6 +40,18 @@
   </div>
 </div>
 <table class="full">
+  <thead>
+    <tr>
+      <th><%= sortable 'subject', Ticket.human_attribute_name(:subject) %></th>
+      <th><%= sortable 'replies_count', Ticket.human_attribute_name(:replies_count) %></th>
+      <th><%= sortable 'labels_count', Ticket.human_attribute_name(:labels) %></th>
+      <th class="text-right"><%= sortable 'assignee.email', Ticket.human_attribute_name(:assignee) %></th>
+      <th class="text-right"><%= sortable 'time_consumed', Ticket.human_attribute_name(:time_consumed) %></th>
+      <th class="text-right"><%= sortable 'deadline', Ticket.human_attribute_name(:deadline) %></th>
+      <th class="text-right"><%= sortable 'group.name', Ticket.human_attribute_name(:group) %></th>
+      <th class="text-right"><%= t(:close_ticket) %></th>
+    </tr>
+  </thead>
   <tbody>
     <% @tickets.each do |ticket| %>
       <tr data-ticket-url="<%= ticket_url(ticket) %>">

@@ -112,4 +112,8 @@ jQuery(function() {
     }
   });
 
+  jQuery('a.current.sort-trigger').each(function(){
+    var a = jQuery(this);
+    a.closest('th').addClass(a.attr("class"));
+  });
 });
