@@ -13,6 +13,10 @@ Major fork changes
 5. Added pure Slack integration through rules functionality
 6. Added Polish locale
 7. Added Deadline attribute for Ticket
+8. Sorted (with headers) tickets table
+9. Groups functionality: Ticket can belongs to group, Agent can be member of any group
+10. New role: Admin with maximum privileges
+11. Agent is not an admin: can manage tickets only from own groups
 
 Installation
 ------------
