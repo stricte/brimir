@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   check_authorization unless: :devise_controller?
 
   rescue_from CanCan::AccessDenied do |exception|
-    if Rails.env == :production
+    if Rails.env.production?
       redirect_to root_url, alert: exception.message
     else
       # for tests and development, we want unauthorized status codes
