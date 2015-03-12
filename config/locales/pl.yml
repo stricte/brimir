@@ -37,7 +37,7 @@ pl:
     labels: 'Wszystkie utworzone etykiety będą widoczne tutaj. Możesz za ich pomocą filtrować zgłoszenia.'
     rules: 'Tutaj możesz tworzyć automatyczne reguły dla nowych zgłoszeń (przypisywać agentów, wysyłać powiadomienia, itp.).'
     users: 'W tym miejscu można zarządzać użytkownikami serwisu.'
-    final: 'Dziękujemy za używanie Brimira.'
+    final: "Dziękujemy za używanie %{title}"
     next: 'Następny'
     previous: 'Poprzedni'
     end: 'Koniec'
@@ -229,15 +229,15 @@ pl:
   email_addresses: 'Adres email dla wiadomości wychodzących'
 
 # email_addresses/new
-  verification_mail_will_be_sent: 'Upewnij się, że ten adres email jest skonfigurowany poprawnie (wiadomości są przekierowywane do Brimir). Po dodaniu adresu zostanie wysłana wiadomość weryfikacyjna. Tylko zweryfikowany adres email może być użyty jako wychodzący.'
-  mark_spam_spf: 'Jeżeli serwer pocztowy Brimir nie zostanie dodany do rekordu SPF w DNS, wiadomości wysyłane przez niego mogą zostać uznane za spam.'
+  verification_mail_will_be_sent: "Upewnij się, że ten adres email jest skonfigurowany poprawnie (wiadomości są przekierowywane do %{title}). Po dodaniu adresu zostanie wysłana wiadomość weryfikacyjna. Tylko zweryfikowany adres email może być użyty jako wychodzący."
+  mark_spam_spf: 'Jeżeli serwer pocztowy %{title} nie zostanie dodany do rekordu SPF w DNS, wiadomości wysyłane przez niego mogą zostać uznane za spam.'
 
 # controllers/email_addresses
   email_address_added: 'Adres email został dodany.'
   email_address_removed: 'Adres email został usunięty.'
 
 # slack
-  slack_new_ticket_info: 'Utworzono nowe zgłoszenie: "%{ticket_subject}" wysłane przez %{ticket_from}. Sprawdź szczegóły logując się do Brmira'
+  slack_new_ticket_info: 'Utworzono nowe zgłoszenie w %{title}: "%{ticket_subject}" wysłane przez %{ticket_from}. Sprawdź szczegóły logując się do %{title}'
 
   activerecord:
     models:

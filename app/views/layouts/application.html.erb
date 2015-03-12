@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= content_for?(:title) ? yield(:title) : 'Brimir' %></title>
+    <title><%= content_for?(:title) ? yield(:title) : Site.title %></title>
     <%= favicon_link_tag 'favicon.png' %>
     <%= stylesheet_link_tag '//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,600italic' %>
     <%= stylesheet_link_tag 'application' %>
@@ -21,7 +21,7 @@
       <nav class="top-bar" data-topbar>
         <ul class="title-area medium-3 large-2">
           <li class="name">
-            <h1><a href="<%= root_path %>">BRIMIR</a></h1>
+          <h1><a href="<%= root_path %>"><%= Site.title %></a></h1>
           </li>
           <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
         </ul>
@@ -205,7 +205,7 @@
           <p><%= t('joyride.groups') %></p>
         </li>
         <li data-button="<%= t('joyride.end') %>" data-prev-text="<%= t('joyride.previous') %>">
-          <h4><%= t('joyride.final') %></h4>
+          <h4><%= t('joyride.final', title: Site.title) %></h4>
           <p>&nbsp;</p>
         </li>
       </ol>
