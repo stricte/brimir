@@ -25,7 +25,7 @@ en:
     labels: After adding labels to tickets or users, they will show up here. You can then use them as filters.
     rules: Automatically add labels, assignees, change status and more.
     users: Add more agents or normal users.
-    final: Thanks for using Brimir!
+    final: "Thanks for using %{title}!"
     next: Next
     previous: Previous
     end: End
@@ -210,15 +210,15 @@ en:
   email_addresses: Email addresses for outgoing email
 
 # email_addresses/new
-  verification_mail_will_be_sent: Make sure this email address is forwarded correctly to Brimir. An automated verification email will be sent when you click save. Only verified email addresses can be used for outgoing mail.
-  mark_spam_spf: Brimir mails might be marked as spam when you don't add this server to the SPF DNS record of the above mail address.
+  verification_mail_will_be_sent: "Make sure this email address is forwarded correctly to %{title}. An automated verification email will be sent when you click save. Only verified email addresses can be used for outgoing mail."
+  mark_spam_spf: "%{title} mails might be marked as spam when you don't add this server to the SPF DNS record of the above mail address."
 
 # controllers/email_addresses
   email_address_added: Email address added
   email_address_removed: Email address removed
 
 # slack
-  slack_new_ticket_info: 'There is new ticket in Brimir "%{ticket_subject}" sent by %{ticket_from}. Check details on Brimir'
+  slack_new_ticket_info: 'There is new ticket in %{title} "%{ticket_subject}" sent by %{ticket_from}. Check details on %{title}: http://%{domain}'
 
 # controllers/groups
   new_group: New group

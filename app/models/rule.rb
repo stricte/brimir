@@ -60,8 +60,8 @@ class Rule < ActiveRecord::Base
       end
 
     elsif action_operation == 'post_to_slack'
-      notifier = Slack::Notifier.new action_value, username: 'Brimir'
-      notifier.ping I18n.t(:slack_new_ticket_info, ticket_subject: ticket.subject, ticket_from: ticket.user.email), http_options: { open_timeout: 5 }
+      notifier = Slack::Notifier.new action_value, username: "#{Site.title} (#{Site.domain})"
+      notifier.ping I18n.t(:slack_new_ticket_info, domain: Site.domain, title: Site.title, ticket_subject: ticket.subject, ticket_from: ticket.user.email), http_options: { open_timeout: 5 }
 
     elsif action_operation == 'change_group'
       group = Group.where(name: action_value).first

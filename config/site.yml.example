@@ -1,0 +1,15 @@
+# config/site.yml
+defaults: &defaults
+  title: Brimir
+  domain: example.com
+  version: 1.0
+  base_email: ala_ma_kota@example.com
+
+production:
+  <<: *defaults
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults

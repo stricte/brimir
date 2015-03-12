@@ -13,12 +13,12 @@
       <%= f.check_box :default %>
 
       <p>
-        <%= t(:verification_mail_will_be_sent) %>
+        <%= t(:verification_mail_will_be_sent, title: Site.title) %>
       </p>
 
       <p>
         <strong>
-          <%= t(:mark_spam_spf) %>
+          <%= t(:mark_spam_spf, title: Site.title) %>
         </strong>
       </p>
 
