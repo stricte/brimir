@@ -39,3 +39,6 @@ coverage
 
 # assets
 public/assets
+
+# site.yml
+config/site.yml
