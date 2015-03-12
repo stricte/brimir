@@ -218,7 +218,7 @@ en:
   email_address_removed: Email address removed
 
 # slack
-  slack_new_ticket_info: 'There is new ticket in %{title} "%{ticket_subject}" sent by %{ticket_from}. Check details on %{title}'
+  slack_new_ticket_info: 'There is new ticket in %{title} "%{ticket_subject}" sent by %{ticket_from}. Check details on %{title}: http://%{domain}'
 
 # controllers/groups
   new_group: New group

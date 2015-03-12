@@ -237,7 +237,7 @@ pl:
   email_address_removed: 'Adres email został usunięty.'
 
 # slack
-  slack_new_ticket_info: 'Utworzono nowe zgłoszenie w %{title}: "%{ticket_subject}" wysłane przez %{ticket_from}. Sprawdź szczegóły logując się do %{title}'
+  slack_new_ticket_info: 'Utworzono nowe zgłoszenie w %{title}: "%{ticket_subject}" wysłane przez %{ticket_from}. Sprawdź szczegóły logując się do %{title}: http://%{domain}'
 
   activerecord:
     models:
