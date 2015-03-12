@@ -316,3 +316,7 @@ pl:
         name: 'Nazwa'
         description: 'Opis'
         default: 'Czy domyślna'
+  unauthorized:
+    default: 'Nie masz uprawnień do tej strony.'
+    read:
+      ticket: 'Nie masz uprawnień do tego zgłoszenia. Możliwe, że należy już do innej grupy lub po prostu Twoje uprawnienia są niewystarczające.'

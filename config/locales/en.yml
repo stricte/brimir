@@ -276,3 +276,7 @@ en:
         name: Name
         description: Description
         default: Is default group
+  unauthorized:
+    default: You are not authorized to access this page.
+    read:
+      ticket: You are not authorized to view this ticket. Probably it already belongs to another group or simple, your privileges are insufficient.
