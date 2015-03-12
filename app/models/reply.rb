@@ -49,7 +49,7 @@ class Reply < ActiveRecord::Base
     if ticket.assignee.present?
       to << ticket.assignee
     else
-      to += User.agents_to_notify
+      to += User.agents_to_notify(ticket.group_id)
     end
 
     ticket.labels.each do |label|

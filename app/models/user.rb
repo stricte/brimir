@@ -44,12 +44,17 @@ class User < ActiveRecord::Base
     where('LOWER(email) LIKE ?', '%' + email.downcase + '%')
   }
 
+  scope :group_members, ->(group_id) {
+   joins(:groups).where("groups.id = ?", group_id)
+  }
+
   def customer?
     !(agent? || admin?)
   end
 
-  def self.agents_to_notify
-    User.agents
-        .where(notify: true)
+  def self.agents_to_notify(group_id = nil)
+    users = User.agents.where(notify: true)
+    users = users.group_members(group_id) if group_id
+    users
   end
 end
