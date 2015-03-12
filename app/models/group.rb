@@ -1,6 +1,6 @@
 class Group < ActiveRecord::Base
   validates_presence_of :name
-  validates_uniqueness_of :default
+  validates :default, :uniqueness => {:if => :default?}
 
   has_many :tickets
 
