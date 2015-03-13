@@ -310,6 +310,7 @@ pl:
       template:
         title: 'Tytuł'
         content: 'Treść'
+        public: 'Publiczny'
         description: 'Opis'
 
       group:

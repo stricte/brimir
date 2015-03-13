@@ -7,7 +7,7 @@ class TemplatesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @templates = Template.paginate(page: params[:page]).all
+    @templates = Template.accessible_by(current_ability).paginate(page: params[:page]).all
     respond_with(@templates)
   end
 
@@ -47,6 +47,6 @@ class TemplatesController < ApplicationController
   end
 
   def template_params
-    params.require(:template).permit(:title, :description, :content)
+    params.require(:template).permit(:title, :description, :content, :public).merge(user_id: current_user.id)
   end
 end

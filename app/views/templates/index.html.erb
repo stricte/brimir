@@ -16,8 +16,8 @@
       <thead>
         <tr>
           <th><%= ::Template.human_attribute_name :title %></th>
+          <th><%= ::Template.human_attribute_name :public %></th>
           <th><%= ::Template.human_attribute_name :description %></th>
-          <th><%= ::Template.human_attribute_name :content %></th>
           <th></th>
         </tr>
       </thead>
@@ -26,8 +26,8 @@
         <% @templates.each do |template| %>
           <tr>
             <td><%= link_to template.title, edit_template_path(template) %></td>
-            <td><%= template.description %></td>
-            <td><%= truncate(template.content, length: 30) %></td>
+            <td><%= fa_icon 'check' if template.public? %></td>
+            <td><%= truncate(template.description, length: 30) %></td>
             <td>
               <%= link_to template_path(template), method: :delete,
                 'data-confirm' => t(:are_you_sure) do %>

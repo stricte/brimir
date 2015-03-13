@@ -40,7 +40,8 @@ class Ability
     can :manage, Reply, ticket: { group_id: user.group_ids }
 
     can [:read, :create], Label
-    can :manage, ::Template
+    can :manage, ::Template, user_id: user.id
+    can :read, ::Template, public: true
     can :manage, Labeling, labelable_type: 'Ticket', labelable: {assignee_id: user.id}
     can :manage, Labeling, labelable_type: 'Ticket', labelable: {group_id: user.group_ids}
     can [:edit, :update], User, id: user.id

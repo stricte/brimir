@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_many :labels, through: :labelings
   has_many :user_groups
   has_many :groups, through: :user_groups
+  has_many :templates, :class_name => ::Template
 
   # identities for omniauth
   has_many :identities
