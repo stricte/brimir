@@ -92,6 +92,8 @@ jQuery(function() {
     dialog.foundation('reveal','open');
   });
 
+  jQuery('.select2-tags').select2({tags: [], multiple: true, allowclear: true,width: 'resolve', minimumResultsForSearch: 1});
+
   jQuery('.select2-create').select2({
     width: 'resolve',
     createSearchChoicePosition: 'bottom',

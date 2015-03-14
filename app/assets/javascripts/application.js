@@ -86,7 +86,7 @@
       jQuery('[data-main]').css('min-height', height+'px');
     }
 
-    jQuery('.select2').select2({ width: 'resolve' });
+    jQuery('.select2').select2({ width: 'resolve', allowClear: true });
 
     dialog = jQuery('[data-dialog]');
 

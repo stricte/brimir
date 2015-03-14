@@ -2,22 +2,18 @@
 
   <h3><%= t(:new_ticket) %></h3>
 
-  <p>
-    <%= f.text_field :from %>
-  </p>
-
-  <p>
-    <%= f.text_field :subject %>
-  </p>
-  <p>
-    <%= f.text_area :content, class: 'tinymce' %>
-  </p>
-
+  <p><%= f.text_field :from %></p>
+  <p><%= f.text_field :subject %></p>
+  <% if current_user.agent? || current_user.admin? %>
+    <p><%= f.collection_select :assignee_id, User.agents, :id, :email, {:include_blank => true}, {class: 'select2'} %></p>
+    <p><%= f.select :priority, Ticket.priorities.keys.map{|priority| [t(priority), priority]}, {:include_blank => true}, {class: 'select2'} %></p>
+    <p><%= f.text_field :labels_list, {class: 'labels_list select2-tags'} %></p>
+    <p><%= f.collection_select :group_id, Group.viewable_by(current_user), :id, :name, {:include_blank => true}, {class: 'select2'} %></p>
+    <p><%= f.text_field :deadline, value: Time.now.to_s(:timestamp_without_secs), class: 'datetimepicker', size: 20 %><br/><br/></p>
+  <% end %>
+  <p><%= f.text_area :content, class: 'tinymce' %></p>
   <%= render 'attachments/form', f: f %>
-
-  <p>
-    <%= f.submit class: 'button regular radius' %>
-  </p>
+  <p><%= f.submit class: 'button regular radius' %></p>
 
 <% end %>
 

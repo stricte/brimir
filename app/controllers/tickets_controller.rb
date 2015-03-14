@@ -198,6 +198,7 @@ class TicketsController < ApplicationController
         :sender,
         :deadline,
         :group_id,
+        :labels_list,
         attachments_attributes: [
           :file
         ])

@@ -284,6 +284,8 @@ pl:
         time_consumed: 'Czas zużyty'
         deadline: 'Deadline'
         group: 'Grupa'
+        labels: 'Etykiety'
+        labels_list: 'Lista etykiet'
 
       rule:
         filter_field: 'Pole'

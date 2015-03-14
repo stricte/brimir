@@ -44,9 +44,11 @@ class Ticket < ActiveRecord::Base
   before_save :set_time_consumed
   before_save :change_sender
   before_create :set_default_group
+  after_create :create_labels
 
   attr_accessor :consumed_days, :consumed_hours, :consumed_minutes
   attr_accessor :sender
+  attr_accessor :labels_list
 
   def self.active_labels(status)
     label_ids = where(status: Ticket.statuses[status])
@@ -149,6 +151,12 @@ class Ticket < ActiveRecord::Base
   end
 
   protected
+
+  def create_labels
+    self.labels_list.split(',').each do |label|
+      self.labelings.create({label: {name: label.strip}})
+    end unless self.labels_list.split(',').blank?
+  end
 
   def set_default_group
     default_group = Group.where(default: true).first
