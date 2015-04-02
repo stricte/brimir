@@ -1,0 +1,16 @@
+<div class="fullcalendar tickets-calendar"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    jQuery('.fullcalendar.tickets-calendar').fullCalendar({
+      events: {
+        url: '<%= calendar_tickets_path(format: :json) %>',
+        cache: false
+      },
+      header: {
+        left: 'month,basicWeek,basicDay', 
+        center: 'title', 
+        right: 'today prev,next'
+      }
+    });
+  }, false);
+</script>

@@ -68,4 +68,15 @@ module ApplicationHelper
       'inbox'
     end
   end
+
+  def ticket_background_color(ticket)
+  color = case ticket.priority
+          when 'unknown' then '#ccc'
+          when 'low' then '#ffd700'
+          when 'medium' then '#ff8000'
+          when 'high' then '#da1500'
+          else ''
+          end
+  color
+end
 end

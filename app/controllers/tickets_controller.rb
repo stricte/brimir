@@ -24,6 +24,21 @@ class TicketsController < ApplicationController
   # this is needed for brimir integration in other sites
   before_filter :allow_cors, only: [:create, :new]
 
+  def calendar
+    params[:status] ||= 'open'
+
+    @tickets = @tickets.by_status(params[:status])
+      .by_label_id(params[:label_id])
+      .filter_by_assignee_id(params[:assignee_id])
+      .events(params[:start], params[:end])
+
+    respond_to do |format|
+      format.html
+      format.json do
+      end
+    end
+  end
+
   def closed
     @ticket = Ticket.find(params[:id])
     authorize! :update, @ticket

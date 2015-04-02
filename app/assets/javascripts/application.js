@@ -18,6 +18,9 @@
 //= require tickets
 //= require fancybox
 //= require jquery.autosize
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/lang-all
 //= require foundation-datetimepicker
 
 (function() {

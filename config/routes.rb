@@ -14,6 +14,9 @@ Brimir::Application.routes.draw do
   end
 
   resources :tickets, only: [:index, :show, :update, :new, :create] do
+    collection do
+      get :calendar
+    end
     member do
       put :closed
     end
