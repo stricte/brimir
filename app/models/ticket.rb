@@ -45,6 +45,8 @@ class Ticket < ActiveRecord::Base
   before_save :change_sender
   before_create :set_default_group
   after_create :create_labels
+  after_create :set_start_time
+  after_save :set_end_time
 
   attr_accessor :consumed_days, :consumed_hours, :consumed_minutes
   attr_accessor :sender
@@ -118,6 +120,10 @@ class Ticket < ActiveRecord::Base
     end
   }
 
+  scope :events, lambda { |start, stop|
+    where("start_time <= ? AND (end_time >= ? OR end_time IS NULL)", stop, start)
+  }
+
   def set_default_notifications!
     self.notified_user_ids = User.agents_to_notify(group_id).pluck(:id)
   end
@@ -151,6 +157,17 @@ class Ticket < ActiveRecord::Base
   end
 
   protected
+
+  def set_start_time
+    self.update_column(:start_time, self.created_at)
+  end
+
+  def set_end_time
+    if status == 'closed'
+      change_status_time = self.status_changes.order('updated_at DESC').first.try(:updated_at)
+      self.update_column(:end_time, change_status_time)
+    end
+  end
 
   def create_labels
     self.labels_list.split(',').each do |label|
