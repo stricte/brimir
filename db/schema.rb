@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313100643) do
+ActiveRecord::Schema.define(version: 20150331185656) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "attachable_id"
@@ -141,6 +141,8 @@ ActiveRecord::Schema.define(version: 20150313100643) do
     t.datetime "deadline"
     t.integer  "replies_count", default: 0
     t.integer  "labels_count",  default: 0
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   add_index "tickets", ["assignee_id"], name: "index_tickets_on_assignee_id"
