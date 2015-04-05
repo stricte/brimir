@@ -113,6 +113,7 @@ pl:
   hours: 'Godzin'
   time_consumed: 'Czas zużyty'
   notes: 'Notatki'
+  ticket_pinged: 'Ping został wysłany'
 
 # tickets/_change_priority_form
   change: 'Zmień'

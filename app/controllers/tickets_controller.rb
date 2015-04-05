@@ -17,12 +17,21 @@
 class TicketsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:create, :new]
-  load_and_authorize_resource :ticket, except: [:create, :closed]
+  load_and_authorize_resource :ticket, except: [:create, :closed, :ping]
   skip_authorization_check only: :create
   skip_before_action :verify_authenticity_token, only: :create, if: 'request.format.json?'
 
   # this is needed for brimir integration in other sites
   before_filter :allow_cors, only: [:create, :new]
+
+  def ping
+    @ticket = Ticket.find(params[:id])
+    authorize! :read, @ticket
+
+    NotificationMailer.ping(@ticket, current_user).deliver_now
+
+    redirect_to ticket_path(@ticket), notice: I18n::translate(:ticket_pinged)
+  end
 
   def closed
     @ticket = Ticket.find(params[:id])

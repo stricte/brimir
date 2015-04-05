@@ -94,6 +94,7 @@ en:
   hours: 'Hours'
   time_consumed: 'Time consumed'
   notes: 'Notes'
+  ticket_pinged: 'Ping have been sent'
 
 # tickets/_change_priority_form
   change: Change

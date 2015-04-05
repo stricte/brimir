@@ -67,8 +67,8 @@ class NotificationMailer < ActionMailer::Base
       headers['Message-ID'] = "<#{ticket.message_id}>"
     end
     mail(to: ticket.assignee.email, subject:
-        'Ticket status modified in ' + ticket.status + ' for: ' \
-        + ticket.subject)
+         'Ticket status modified in ' + ticket.status + ' for: ' \
+         + ticket.subject)
   end
 
   def priority_changed(ticket)
@@ -78,8 +78,8 @@ class NotificationMailer < ActionMailer::Base
       headers['Message-ID'] = "<#{ticket.message_id}>"
     end
     mail(to: ticket.assignee.email, subject:
-        'Ticket priority modified in ' + ticket.priority + ' for: ' \
-        + ticket.subject)
+         'Ticket priority modified in ' + ticket.priority + ' for: ' \
+         + ticket.subject)
   end
 
   def assigned(ticket)
@@ -89,35 +89,46 @@ class NotificationMailer < ActionMailer::Base
       headers['Message-ID'] = "<#{ticket.message_id}>"
     end
     mail(to: ticket.assignee.email, subject:
-        'Ticket assigned to you: ' + ticket.subject)
+         'Ticket assigned to you: ' + ticket.subject)
   end
 
+  def ping(ticket, sender)
+    @ticket = ticket
+    @sender = sender
+
+    unless ticket.message_id.blank?
+      headers['Message-ID'] = "<#{ticket.message_id}>"
+    end
+
+    mail(to: ticket.assignee.email, subject:
+         'Remember about ticket: ' + ticket.subject)
+  end
 
   protected
-    def add_reference_message_ids(reply)
-      references = reply.other_replies.with_message_id.pluck(:message_id)
+  def add_reference_message_ids(reply)
+    references = reply.other_replies.with_message_id.pluck(:message_id)
 
-      if references.count > 0
-        headers['References'] = '<' + references.join('> <') + '>'
-      end
+    if references.count > 0
+      headers['References'] = '<' + references.join('> <') + '>'
+    end
+  end
+
+  def add_in_reply_to_message_id(reply)
+
+    last_reply = reply.other_replies.order(:id).last
+
+    if last_reply.nil?
+      headers['In-Reply-To'] = '<' + reply.ticket.message_id.to_s + '>'
+    else
+      headers['In-Reply-To'] = '<' + last_reply.message_id.to_s + '>'
     end
 
-    def add_in_reply_to_message_id(reply)
+  end
 
-      last_reply = reply.other_replies.order(:id).last
-
-      if last_reply.nil?
-        headers['In-Reply-To'] = '<' + reply.ticket.message_id.to_s + '>'
-      else
-        headers['In-Reply-To'] = '<' + last_reply.message_id.to_s + '>'
-      end
-
+  def add_attachments(ticket_or_reply)
+    ticket_or_reply.attachments.each do |at|
+      attachments[at.file_file_name] = File.read(at.file.path)
     end
-
-    def add_attachments(ticket_or_reply)
-      ticket_or_reply.attachments.each do |at|
-        attachments[at.file_file_name] = File.read(at.file.path)
-      end
-    end
+  end
 
 end

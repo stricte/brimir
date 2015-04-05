@@ -15,6 +15,7 @@ Brimir::Application.routes.draw do
 
   resources :tickets, only: [:index, :show, :update, :new, :create] do
     member do
+      post :ping
       put :closed
     end
   end
