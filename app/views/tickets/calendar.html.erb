@@ -3,7 +3,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     jQuery('.fullcalendar.tickets-calendar').fullCalendar({
       events: {
-        url: '<%= calendar_tickets_path(format: :json) %>',
+        url: '<%= calendar_tickets_path(format: :json, status: params[:status], assignee_id: params[:assignee_id]) %>',
         cache: false
       },
       header: {
