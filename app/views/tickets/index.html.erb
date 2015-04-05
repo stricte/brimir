@@ -23,7 +23,7 @@
           <% end %>
 
           <% if current_user.agent? || current_user.admin? %>
-            <%= link_to calendar_tickets_path, class: 'secondary radius tiny button right mlm' do%>
+            <%= link_to calendar_tickets_path(status: params[:status], assignee_id: params[:assignee_id]), class: 'secondary radius tiny button right mlm' do%>
               <i class="fa fa-calendar" style="top:1px"></i>
             <% end %>
           <% end %>
