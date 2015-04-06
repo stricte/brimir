@@ -4,7 +4,7 @@
 
     <%= link_to ping_ticket_path, method: 'POST', class: 'pull-right mtm mrm' do %>
       <%= fa_icon 'bell-o' %>
-    <% end %>
+    <% end if @ticket.assignee%>
     <h3 class="mt">
       <%= !@ticket.subject.blank? ? @ticket.subject : "<em>(#{t(:no_subject)})</em>".html_safe %>
     </h3>
