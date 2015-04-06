@@ -33,6 +33,21 @@ class TicketsController < ApplicationController
     redirect_to ticket_path(@ticket), notice: I18n::translate(:ticket_pinged)
   end
 
+  def calendar
+    params[:status] ||= 'open'
+
+    @tickets = @tickets.by_status(params[:status])
+    .by_label_id(params[:label_id])
+    .filter_by_assignee_id(params[:assignee_id])
+    .events(params[:start], params[:end])
+
+    respond_to do |format|
+      format.html
+      format.json do
+      end
+    end
+  end
+
   def closed
     @ticket = Ticket.find(params[:id])
     authorize! :update, @ticket
@@ -58,16 +73,16 @@ class TicketsController < ApplicationController
     params[:status] ||= 'open'
 
     @tickets = @tickets.by_status(params[:status])
-      .search(params[:q])
-      .by_label_id(params[:label_id])
-      .filter_by_assignee_id(params[:assignee_id])
+    .search(params[:q])
+    .by_label_id(params[:label_id])
+    .filter_by_assignee_id(params[:assignee_id])
 
     @tickets = params[:sort].blank? ? @tickets.ordered : @tickets.sorted(params[:sort], params[:direction])
 
     respond_to do |format|
       format.html do
         @tickets = @tickets.paginate(page: params[:page],
-            per_page: current_user.per_page)
+                                     per_page: current_user.per_page)
       end
       format.csv do
         @tickets = @tickets.includes(:status_changes)

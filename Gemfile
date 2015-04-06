@@ -96,3 +96,7 @@ gem 'slack-notifier'
 
 # Foundation datepicker
 gem 'foundation-datetimepicker-rails'
+
+#Calendar
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'

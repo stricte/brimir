@@ -22,6 +22,12 @@
             <i class="fa fa-cloud-download" style="top:1px"></i>
           <% end %>
 
+          <% if current_user.agent? || current_user.admin? %>
+            <%= link_to calendar_tickets_path(status: params[:status], assignee_id: params[:assignee_id], label_id: params[:label_id]), class: 'secondary radius tiny button right mlm' do%>
+              <i class="fa fa-calendar" style="top:1px"></i>
+            <% end %>
+          <% end %>
+
           <% if params[:status] == 'deleted' %>
             <%= link_to tickets_deleted_path, method: :delete, 'data-confirm' => t(:are_you_sure_empty_trash), class: 'secondary radius tiny button right mlm' do %>
               <i class="fa fa-bomb" style="top:1px"></i>
