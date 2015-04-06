@@ -104,6 +104,17 @@ class NotificationMailer < ActionMailer::Base
          'Remember about ticket: ' + ticket.subject)
   end
 
+  def deadline(ticket)
+    @ticket = ticket
+
+    unless ticket.message_id.blank?
+      headers['Message-ID'] = "<#{ticket.message_id}>"
+    end
+
+    mail(to: ticket.assignee.email, subject:
+         'Deadline reached for ticket: ' + ticket.subject)
+  end
+
   protected
   def add_reference_message_ids(reply)
     references = reply.other_replies.with_message_id.pluck(:message_id)
