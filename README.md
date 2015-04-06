@@ -17,6 +17,8 @@ Major fork changes
 9. Groups functionality: Ticket can belongs to group, Agent can be member of any group
 10. New role: Admin with maximum privileges
 11. Agent is not an admin: can manage tickets only from own groups
+12. Pure calendar view added (fullcalendar)
+13. New notifications added: ping (remind assignee about ticket), deadline (for deadline reached)
 
 Installation
 ------------
