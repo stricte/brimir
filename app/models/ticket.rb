@@ -172,7 +172,7 @@ class Ticket < ActiveRecord::Base
   def create_labels
     self.labels_list.split(',').each do |label|
       self.labelings.create({label: {name: label.strip}})
-    end unless self.labels_list.split(',').blank?
+    end unless self.labels_list.blank?
   end
 
   def set_default_group
