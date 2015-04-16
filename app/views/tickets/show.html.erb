@@ -6,7 +6,9 @@
       <%= fa_icon 'bell-o' %>
     <% end if @ticket.assignee%>
     <h3 class="mt">
-      <%= !@ticket.subject.blank? ? @ticket.subject : "<em>(#{t(:no_subject)})</em>".html_safe %>
+      <a href="#" data-reveal-id="change-subject">
+        <%= !@ticket.subject.blank? ? @ticket.subject : "<em>(#{t(:no_subject)})</em>".html_safe %>
+      </a>
     </h3>
     <h5 class="subheader text-secondary mb">
       <a href="#" data-reveal-id="change-sender">
@@ -218,3 +220,4 @@
 <%= render 'set_deadline_form', { ticket: @ticket } %>
 <%= render 'change_sender_form', { ticket: @ticket } %>
 <%= render 'change_group_form', { ticket: @ticket } %>
+<%= render 'change_subject_form', { ticket: @ticket } %>
