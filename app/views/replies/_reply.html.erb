@@ -3,7 +3,7 @@
     <strong><%= reply.user.email %></strong>
     <small class="pull-right"><%= time_ago_in_words(reply.created_at.in_time_zone(current_user.time_zone)) %> <%= t(:ago) %></small>
   </p>
-  <div id="reply-<%=reply.id%>" class="<%= div_class %>">
+  <div id="reply-<%=reply.id%>" class="<%= div_class %> reply_content">
 
     <% if reply.content_type == 'html' %>
       <% content = reply.content %>
