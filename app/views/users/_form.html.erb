@@ -29,7 +29,7 @@
 
       <%= f.text_area :contact%>
 
-      <% if (can? :manage, UserGroup) && @user.agent? %>
+      <% if (can? :manage, UserGroup) && @user.agent? && @groups %>
         <%= f.collection_select :group_ids, @groups, :id, :name, {}, {multiple: true, class: 'select2'} %>
       <% end %>
     </div>
