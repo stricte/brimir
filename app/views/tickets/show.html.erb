@@ -1,14 +1,17 @@
 <div class="row bb">
   <div class="medium-12 columns">
-    <a class="pull-right mtm" href="#print" onclick="window.print()"><%= fa_icon 'print' %></a>
+    <a class="pull-right mtm" href="#print" onclick="window.print()">
+      <span data-tooltip aria-haspopup="true" title="<%= t(:print, default: 'Print ticket') %>"><%= fa_icon 'print' %></span>
+    </a>
 
     <%= link_to clone_ticket_path(@ticket), class: 'pull-right mtm mrm' do %>
-      <%= fa_icon 'files-o' %>
+      <span data-tooltip aria-haspopup="true" title="<%= t(:clone, default: 'Clone ticket') %>"><%= fa_icon 'files-o' %></span>
     <% end %>
 
     <%= link_to ping_ticket_path, method: 'POST', class: 'pull-right mtm mrm' do %>
-      <%= fa_icon 'bell-o' %>
+      <span data-tooltip aria-haspopup="true" title="<%= t(:ping, default: 'Ping assignee') %>"><%= fa_icon 'bell-o' %></span>
     <% end if @ticket.assignee%>
+
     <h3 class="mt">
       <a href="#" data-reveal-id="change-subject">
         <%= !@ticket.subject.blank? ? @ticket.subject : "<em>(#{t(:no_subject)})</em>".html_safe %>
