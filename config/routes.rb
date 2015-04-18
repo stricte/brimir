@@ -20,6 +20,7 @@ Brimir::Application.routes.draw do
     member do
       post :ping
       put :closed
+      get :clone
     end
   end
 

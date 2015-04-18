@@ -17,7 +17,7 @@
 class TicketsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:create, :new]
-  load_and_authorize_resource :ticket, except: [:create, :closed, :ping]
+  load_and_authorize_resource :ticket, except: [:create, :closed, :ping, :clone]
   skip_authorization_check only: :create
   skip_before_action :verify_authenticity_token, only: :create, if: 'request.format.json?'
 
@@ -127,6 +127,14 @@ class TicketsController < ApplicationController
         }
       end
     end
+  end
+
+  def clone
+    @oryg_ticket = Ticket.find(params[:id])
+    authorize! :read, @oryg_ticket
+    @ticket = @oryg_ticket.dup
+    @ticket.labels_list = @oryg_ticket.labels.pluck(:name).join(',')
+    render :new
   end
 
   def new
