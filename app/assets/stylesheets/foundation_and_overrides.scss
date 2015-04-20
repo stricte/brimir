@@ -55,5 +55,10 @@ $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
 $label-font-weight: bold;
 $label-padding: rem-calc(4 8);
 
+$tabs-navigation-padding: rem-calc(12);
+$tabs-navigation-active-bg-color: #2f87c1;
+$tabs-navigation-hover-bg-color: scale-color(#2f87c1, $lightness: +16%);
+$tabs-navigation-active-font-color: #fff;
+
 @import 'foundation';
 @import 'foundation-datetimepicker';
