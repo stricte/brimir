@@ -97,9 +97,9 @@
     <div class="medium-3 columns">
       <div class="ma">
         <ul class="tabs" data-tab>
-          <li class="tab-title active"><a href="#panel1">Szczegóły</a></li>
+          <li class="tab-title active"><a href="#panel1"><%= t(:details, default: 'Details')%></a></li>
           <% if can? :update, @ticket %>
-            <li class="tab-title"><a href="#panel2">Notatki</a></li>
+            <li class="tab-title"><a href="#panel2"><%= t(:notes, default: 'Notes')%></a></li>
           <% end %>
         </ul>
         <div class="tabs-content">
