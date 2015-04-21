@@ -101,6 +101,9 @@
           <% if can? :update, @ticket %>
             <li class="tab-title"><a href="#panel2"><%= t(:notes, default: 'Notes')%></a></li>
           <% end %>
+          <% if can? :read, Article %>
+            <li class="tab-title"><a href="#panel3"><%= t(:articles, default: 'Articles')%></a></li>
+          <% end %>
         </ul>
         <div class="tabs-content">
           <div class="content active" id="panel1">
@@ -221,22 +224,40 @@
                 </ul>
               <% end %>
               </dd>
-            </div>
-            <% if can? :update, @ticket %>
-              <div class="content" id="panel2">
-                <dt><%= t(:notes) %></dt>
-                <dd><%= render :partial => 'notes_form' %></dd>
-              </div>
-            <% end %>
+            </dl>
           </div>
-        </dl>
+          <% if can? :update, @ticket %>
+            <div class="content" id="panel2">
+              <dt><%= t(:notes) %></dt>
+              <dd><%= render :partial => 'notes_form' %></dd>
+            </div>
+          <% end %>
+          <% if can? :read, Article%>
+            <div class="content" id="panel3">
+              <% matching_articles = @ticket.find_matching_articles %>
+              <% if matching_articles.empty? %>
+                <%= t(:no_matching_articles, default: 'No matching articles')%>
+              <% else %>
+                <dt><%= t(:matching_articles, default: 'Matching articles')%></dt>
+                <% matching_articles.each do |matching_article|%>
+                  <dd><%= link_to matching_article.title, article_path(matching_article), {target: '_BLANK'} %></dd>
+                <% end %>
+              <% end %>
+
+
+
+              <%= button_to t(:add), new_article_path, method: :get, class: 'tiny radius button mtm' %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
-  <%= render 'change_assignee_form', { ticket: @ticket } %>
-  <%= render 'set_time_consumed_form', { ticket: @ticket } %>
-  <%= render 'set_deadline_form', { ticket: @ticket } %>
-  <%= render 'change_sender_form', { ticket: @ticket } %>
-  <%= render 'change_group_form', { ticket: @ticket } %>
-  <%= render 'change_subject_form', { ticket: @ticket } %>
+<%= render 'change_assignee_form', { ticket: @ticket } %>
+<%= render 'set_time_consumed_form', { ticket: @ticket } %>
+<%= render 'set_deadline_form', { ticket: @ticket } %>
+<%= render 'change_sender_form', { ticket: @ticket } %>
+<%= render 'change_group_form', { ticket: @ticket } %>
+<%= render 'change_subject_form', { ticket: @ticket } %>

@@ -2,9 +2,10 @@ class Article < ActiveRecord::Base
 
   validates_presence_of :title, :description, :body
   attr_accessor :labels_list
-  after_create :create_labels
+  after_save :update_labels
   has_many :labelings, as: :labelable, dependent: :destroy
   has_many :labels, through: :labelings
+  after_initialize :set_labels_list
 
   scope :search, ->(term) {
     if !term.nil?
@@ -39,10 +40,17 @@ class Article < ActiveRecord::Base
   }
 
   private
-  def create_labels
-    self.labels_list.split(',').each do |label|
-      self.labelings.create({label: {name: label.strip}})
-    end unless self.labels_list.blank?
+  def set_labels_list
+    self.labels_list ||= self.labels.pluck(:name).join(',')
+  end
+
+  def update_labels
+    unless self.labels_list.blank?
+      self.labels = self.labels_list.split(',').map do |label|
+        Label.where(name: label.strip).first_or_create
+      end
+    end
+    true
   end
 
 end
