@@ -1,5 +1,7 @@
 Brimir::Application.routes.draw do
 
+  resources :articles
+
   resources :groups
 
   resources :templates

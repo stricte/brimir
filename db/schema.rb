@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331185656) do
+ActiveRecord::Schema.define(version: 20150421091653) do
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
+  end
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "attachable_id"
@@ -143,6 +151,7 @@ ActiveRecord::Schema.define(version: 20150331185656) do
     t.integer  "labels_count",  default: 0
     t.datetime "start_time"
     t.datetime "end_time"
+    t.integer  "parent_id"
   end
 
   add_index "tickets", ["assignee_id"], name: "index_tickets_on_assignee_id"

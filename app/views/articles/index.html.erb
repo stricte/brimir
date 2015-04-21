@@ -1,0 +1,60 @@
+<div class="panel no-b pam">
+  <div class="row collapse">
+    <div class="medium-6 columns">
+      <h3 class="filter-title no-m pts plm">
+        <%= t(:articles, default: 'Articles')%> 
+      </h3>
+    </div>
+    <div class="medium-6 columns">
+      <%= form_tag articles_path, method: :get, class: 'prm' do %>
+        <div class="row collapse">
+          <% params.delete(:controller) %>
+          <% params.delete(:action) %>
+
+          <div class="small-2 columns right">
+            <%= button_tag '<i class="fa fa-search"></i>'.html_safe, type: 'submit', class: 'secondary radius no-bl no-m button postfix' %>
+          </div>
+          <div class="small-5 columns right">
+            <%= text_field_tag :q, params[:q], class: 'no-m radius-tl radius-bl' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<table class="full">
+  <thead>
+    <tr>
+      <th><%= sortable 'title', Article.human_attribute_name(:title) %></th>
+      <th><%= Article.human_attribute_name(:labels) %></th>
+      <th><%= sortable 'description', Article.human_attribute_name(:description) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr data-article-url="<%= article_url(article) %>">
+        <td><%= link_to article.title, article %></td>
+        <td class="text-secondary table-nowrap">
+          <% article.labels.viewable_by(current_user).each do |label| %>
+            <%= render label %>
+          <% end %>
+        </td>
+        <td><%= article.description %></td>
+      </tr>
+    <% end %>
+
+    <% if @articles.empty? %>
+      <tr>
+        <td colspan="100%"><%= t(:no_articles_found, default: 'There are no articles') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% unless @articles.empty? %>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= will_paginate @articles %>
+    </div>
+  </div>
+<% end %>

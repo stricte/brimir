@@ -29,6 +29,9 @@
         <section class="top-bar-section">
           <!-- Right Nav Section -->
           <ul class="right">
+            <% if can? :read, Article %>
+                <li><a href="<%= articles_path %>"><i class="fa fa-book fa-fw"></i></a></li>
+            <% end %>
             <% if can? :manage, EmailAddress %>
                 <li><a href="<%= email_addresses_path %>"><i class="fa fa-envelope fa-fw"></i></a></li>
             <% end %>

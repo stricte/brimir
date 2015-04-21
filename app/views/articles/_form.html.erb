@@ -1,0 +1,15 @@
+<%= form_for @article, html: { multipart: true } do |f| %>
+  <div class="row mt mb">
+    <div class="large-6 columns">
+
+      <p><%= f.text_field :title %></p>
+      <p><%= f.text_area :description %></p>
+      <p><%= f.text_field :labels_list, {class: 'labels_list select2-tags'} %></p>
+      <p><%= f.text_area :body, rows: 10, class: 'tinymce' %></p>
+      <p>
+      <%= f.submit class: 'button regular radius mrm' %>
+      <%= link_to t(:cancel), (@article.new_record? ? articles_path : article_path(@article)) %>
+      </p>
+    </div>
+  </div>
+<% end %>

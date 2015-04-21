@@ -1,0 +1,60 @@
+<div class="row bb">
+  <div class="medium-12 columns">
+    <a class="pull-right mtm" href="#print" onclick="window.print()">
+      <span data-tooltip aria-haspopup="true" title="<%= t(:print, default: 'Print article') %>"><%= fa_icon 'print' %></span>
+    </a>
+    <h3 class="mt">
+      <%= link_to @article.title, edit_article_path(@article) %>
+    </h3>
+
+    <h5>(<%= @article.description%>)</h5>
+  </div>
+</div>
+
+
+<div class="row collapse">
+  <div class="medium-9 columns br">
+    <div class="ma">
+      <% if @article.body.blank? %>
+        (<%= t(:no_content) %>)
+      <% else %>
+
+        <div class="output">
+          <%= sanitize_html(text_to_html(@article.body)) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="medium-3 columns">
+    <div class="ma">
+      <dl class="sticky">
+        <dt><%= t(:labels) %></dt>
+        <dd>
+        <% if can? :update, @article %>
+          <ul data-labelings="" style="margin-left: 0">
+            <% @article.labelings.each do |labeling| %>
+              <%= render labeling %>
+            <% end %>
+          </ul>
+          <%= form_for @labeling, remote: true do |f| %>
+            <%= f.hidden_field :labelable_id %>
+            <%= f.hidden_field :labelable_type %>
+
+            <%= f.fields_for :label, Label.new do |f| %>
+              <%= f.text_field :name, label: false, placeholder: t(:label_name), class: 'select2-create' %>
+            <% end %>
+            <%= f.button t(:add), type: 'submit', class: 'tiny radius button mtm' %>
+          <% end %>
+        <% else %>
+          <ul class="inline-list">
+            <% @article.labels.viewable_by(current_user).each do |label| %>
+              <li><%= render label %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
