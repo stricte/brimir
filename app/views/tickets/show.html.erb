@@ -239,18 +239,20 @@
                 <% if linked_articles.empty? %>
                   <%= t(:no_linked_articles, default: 'No linked articles')%>
                 <% else %>
-                  <dt><%= t(:linked_articles, default: 'Linked articles')%></dt>
-                  <% linked_articles.each do |linked_article|%>
-                    <dd><%= link_to linked_article.title, article_path(linked_article), {target: '_BLANK'} %></dd>
-                  <% end %>
+                  <%= t(:linked_articles, default: 'Linked articles')%>
                 <% end %>
 
                 <% if can? :create, TicketArticle %>
-                  <div><a href="#" data-reveal-id="link-articles" class="tiny button radius" data-reveal-ajax="<%= edit_articles_ticket_path(@ticket)%>"><%= t(:manage)%></a></div>
+                  <a href="#" data-reveal-id="link-articles" class="mlm" data-reveal-ajax="<%= edit_articles_ticket_path(@ticket)%>">
+                    <span><%= fa_icon 'pencil' %></span>
+                  </a>
                 <% end %>
 
+                <% linked_articles.each do |linked_article|%>
+                  <dd><%= link_to linked_article.title, article_path(linked_article), {target: '_BLANK'} %></dd>
+                <% end %>
               </div>
-              <div>
+              <div class="mtm">
                 <% suggested_articles = @ticket.suggested_articles %>
                 <% if suggested_articles.empty? %>
                   <%= t(:no_suggested_articles, default: 'No suggested articles')%>
