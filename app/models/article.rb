@@ -1,11 +1,16 @@
 class Article < ActiveRecord::Base
 
   validates_presence_of :title, :description, :body
+
   attr_accessor :labels_list
+
   after_save :update_labels
+  after_initialize :set_labels_list
+
   has_many :labelings, as: :labelable, dependent: :destroy
   has_many :labels, through: :labelings
-  after_initialize :set_labels_list
+  has_many :ticket_articles
+  has_many :tickets, through: :ticket_articles
 
   scope :search, ->(term) {
     if !term.nil?

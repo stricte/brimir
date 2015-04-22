@@ -54,6 +54,15 @@
           </ul>
         <% end %>
         </dd>
+        <dt><%= t(:linked_tickets)%></dt>
+        <dd>
+          <% if @article.tickets.size == 0 %>
+            <%= t(:no_linked_articles)%>
+          <% end %>
+          <% @article.tickets.each do |ticket| %>
+            <div><%= link_to (ticket.subject || "<em>(#{t(:no_subject)})</em>".html_safe), ticket_path(ticket)%></div>
+          <% end %>
+        </dd>
       </div>
     </dl>
   </div>

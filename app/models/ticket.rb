@@ -35,6 +35,9 @@ class Ticket < ActiveRecord::Base
 
   has_many :status_changes, dependent: :destroy
 
+  has_many :ticket_articles
+  has_many :articles, through: :ticket_articles
+
   enum status: [:open, :closed, :deleted, :waiting]
   enum priority: [:unknown, :low, :medium, :high]
 
@@ -47,10 +50,12 @@ class Ticket < ActiveRecord::Base
   after_create :create_labels
   after_create :set_start_time
   after_save :set_end_time
+  after_save :update_linked_articles
 
   attr_accessor :consumed_days, :consumed_hours, :consumed_minutes
   attr_accessor :sender
   attr_accessor :labels_list
+  attr_accessor :articles_ids
 
   def self.active_labels(status)
     label_ids = where(status: Ticket.statuses[status])
@@ -162,6 +167,12 @@ class Ticket < ActiveRecord::Base
   end
 
   protected
+
+  def update_linked_articles
+    unless self.articles_ids.nil?
+      self.articles = Article.where(id: self.articles_ids)
+    end
+  end
 
   def set_start_time
     self.update_column(:start_time, self.created_at)

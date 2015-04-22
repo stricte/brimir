@@ -39,6 +39,8 @@ class Ability
     can :manage, Reply, ticket: { assignee_id: user.id }
     can :manage, Reply, ticket: { group_id: user.group_ids }
 
+    can :manage, [Article, TicketArticle]
+
     can [:read, :create], Label
     can :manage, ::Template, user_id: user.id
     can :read, ::Template, public: true

@@ -234,19 +234,33 @@
           <% end %>
           <% if can? :read, Article%>
             <div class="content" id="panel3">
-              <% matching_articles = @ticket.find_matching_articles %>
-              <% if matching_articles.empty? %>
-                <%= t(:no_matching_articles, default: 'No matching articles')%>
-              <% else %>
-                <dt><%= t(:matching_articles, default: 'Matching articles')%></dt>
-                <% matching_articles.each do |matching_article|%>
-                  <dd><%= link_to matching_article.title, article_path(matching_article), {target: '_BLANK'} %></dd>
+              <div>
+                <% linked_articles = @ticket.articles %>
+                <% if linked_articles.empty? %>
+                  <%= t(:no_linked_articles, default: 'No linked articles')%>
+                <% else %>
+                  <dt><%= t(:linked_articles, default: 'Linked articles')%></dt>
+                  <% linked_articles.each do |linked_article|%>
+                    <dd><%= link_to linked_article.title, article_path(linked_article), {target: '_BLANK'} %></dd>
+                  <% end %>
                 <% end %>
-              <% end %>
 
+                <% if can? :create, TicketArticle %>
+                  <div><a href="#" data-reveal-id="link-articles" class="tiny button radius" data-reveal-ajax="<%= edit_articles_ticket_path(@ticket)%>"><%= t(:manage)%></a></div>
+                <% end %>
 
-
-              <%= button_to t(:add), new_article_path, method: :get, class: 'tiny radius button mtm' %>
+              </div>
+              <div>
+                <% matching_articles = @ticket.find_matching_articles %>
+                <% if matching_articles.empty? %>
+                  <%= t(:no_matching_articles, default: 'No matching articles')%>
+                <% else %>
+                  <dt><%= t(:matching_articles, default: 'Matching articles')%></dt>
+                  <% matching_articles.each do |matching_article|%>
+                    <dd><%= link_to matching_article.title, article_path(matching_article), {target: '_BLANK'} %></dd>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
           <% end %>
         </div>
@@ -261,3 +275,4 @@
 <%= render 'change_sender_form', { ticket: @ticket } %>
 <%= render 'change_group_form', { ticket: @ticket } %>
 <%= render 'change_subject_form', { ticket: @ticket } %>
+<%= render 'link_articles_form', { ticket: @ticket } %>

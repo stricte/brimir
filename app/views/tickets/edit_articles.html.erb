@@ -1,0 +1,16 @@
+<% if @articles.empty? %>
+  <%= t(:no_articles)%>
+<% else %>
+  <%= form_for @ticket, method: :patch do |f| %>
+    <%= hidden_field_tag "ticket[articles_ids][]", nil %>
+    <table class="full">
+      <% @articles.each do |article| %>
+        <tr>
+          <td><input type="checkbox" name="ticket[articles_ids][]" value="<%= article.id %>" <%= @linked_articles_ids.include?(article.id) ? "checked='true'" : "" %>></td>
+          <td><%= article.title%></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= f.submit t(:change), class: 'button' %>
+  <% end %>
+<% end %>

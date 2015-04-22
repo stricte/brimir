@@ -24,6 +24,15 @@ class TicketsController < ApplicationController
   # this is needed for brimir integration in other sites
   before_filter :allow_cors, only: [:create, :new]
 
+  def edit_articles
+    @articles = Article.all
+    @linked_articles_ids = @ticket.articles.pluck(:id)
+
+    respond_to do |format|
+      format.html { render :layout => !request.xhr? }
+    end
+  end
+
   def ping
     @ticket = Ticket.find(params[:id])
     authorize! :read, @ticket
@@ -231,6 +240,7 @@ class TicketsController < ApplicationController
         :deadline,
         :group_id,
         :labels_list,
+        articles_ids: [],
         attachments_attributes: [
           :file
         ])

@@ -23,6 +23,7 @@ Brimir::Application.routes.draw do
       post :ping
       put :closed
       get :clone
+      get :edit_articles
     end
   end
 

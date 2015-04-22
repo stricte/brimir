@@ -26,6 +26,7 @@
   <thead>
     <tr>
       <th><%= sortable 'title', Article.human_attribute_name(:title) %></th>
+      <th><%= t(:linked_tickets_count, default: 'Linked tickets count')%></th>
       <th><%= Article.human_attribute_name(:labels) %></th>
       <th><%= sortable 'description', Article.human_attribute_name(:description) %></th>
     </tr>
@@ -34,6 +35,9 @@
     <% @articles.each do |article| %>
       <tr data-article-url="<%= article_url(article) %>">
         <td><%= link_to article.title, article %></td>
+        <td>
+          <span class="secondary ba radius label ml" title="<%= article.tickets.size %>"><%= article.tickets.size %></span>
+        </td>
         <td class="text-secondary table-nowrap">
           <% article.labels.viewable_by(current_user).each do |label| %>
             <%= render label %>

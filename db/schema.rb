@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421091653) do
+ActiveRecord::Schema.define(version: 20150421192628) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -130,6 +130,13 @@ ActiveRecord::Schema.define(version: 20150421091653) do
     t.datetime "updated_at",                  null: false
     t.integer  "user_id"
     t.boolean  "public",      default: false
+  end
+
+  create_table "ticket_articles", force: :cascade do |t|
+    t.integer  "ticket_id"
+    t.integer  "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tickets", force: :cascade do |t|
