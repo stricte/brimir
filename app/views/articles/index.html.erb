@@ -6,6 +6,7 @@
       </h3>
     </div>
     <div class="medium-6 columns">
+      <%= link_to t(:new_article), new_article_path, class: 'tiny button right radius mlm no-mb' %>
       <%= form_tag articles_path, method: :get, class: 'prm' do %>
         <div class="row collapse">
           <% params.delete(:controller) %>
