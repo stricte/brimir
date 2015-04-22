@@ -251,13 +251,13 @@
 
               </div>
               <div>
-                <% matching_articles = @ticket.find_matching_articles %>
-                <% if matching_articles.empty? %>
-                  <%= t(:no_matching_articles, default: 'No matching articles')%>
+                <% suggested_articles = @ticket.suggested_articles %>
+                <% if suggested_articles.empty? %>
+                  <%= t(:no_suggested_articles, default: 'No suggested articles')%>
                 <% else %>
-                  <dt><%= t(:matching_articles, default: 'Matching articles')%></dt>
-                  <% matching_articles.each do |matching_article|%>
-                    <dd><%= link_to matching_article.title, article_path(matching_article), {target: '_BLANK'} %></dd>
+                  <dt><%= t(:suggested_articles, default: 'Suggested articles')%></dt>
+                  <% suggested_articles.each do |suggested_article|%>
+                    <dd><%= link_to suggested_article.title, article_path(suggested_article), {target: '_BLANK'} %></dd>
                   <% end %>
                 <% end %>
               </div>

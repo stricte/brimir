@@ -161,8 +161,8 @@ class Ticket < ActiveRecord::Base
     Duration.new(time_consumed*60)
   end
 
-  #Matching through labels
-  def find_matching_articles
+  #Suggested through labels
+  def suggested_articles
     self.labels.joins(:articles).collect(&:articles).collect(&:first).uniq
   end
 

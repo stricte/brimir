@@ -241,6 +241,19 @@ pl:
 # slack
   slack_new_ticket_info: 'Utworzono nowe zgłoszenie w %{title}: "%{ticket_subject}" wysłane przez %{ticket_from}. Sprawdź szczegóły logując się do %{title}: http://%{domain}'
 
+# articles
+  linked_tickets_count: 'Suma połączonych zgłoszeń'
+  linked_tickets: 'Połączone zgłoszenia'
+  no_linked_tickets: 'Brak połączonych zgłoszeń'
+  cancel: 'Anuluj'
+  edit_article: 'Edytuj artykuł'
+  new_article: 'Nowy artykuł'
+  articles: 'Artykuły'
+  linked_articles: 'Połączone artykuły'
+  manage: 'Zarządzaj'
+  suggested_articles: 'Sugerowane artykuły'
+  no_suggested_articles: 'Brak sugerowanych artykułów'
+
   activerecord:
     models:
       attachment: 'Załącznik'
@@ -252,6 +265,7 @@ pl:
       ticket: 'Zgłoszenie'
       user: 'Użytkownik'
       group: 'Grupa'
+      article: "Artykuł"
     attributes:
       user:
         email: 'Email'
@@ -321,6 +335,13 @@ pl:
         name: 'Nazwa'
         description: 'Opis'
         default: 'Czy domyślna'
+      article:
+        title: Tytuł
+        description: Opis
+        body: Treść
+        labels: Etykiety
+        labels_list: Lista etykiet
+
   unauthorized:
     default: 'Nie masz uprawnień do tej strony.'
     read:

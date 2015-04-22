@@ -96,6 +96,10 @@ en:
   notes: 'Notes'
   ticket_pinged: 'Ping have been sent'
   details: 'Details'
+  deadline: Deadline
+  manage: Manage
+  change_sender: Change sender
+  change_subject: Change subject
 
 # tickets/_change_priority_form
   change: Change
@@ -226,6 +230,10 @@ en:
   new_group: New group
   edit_group: Edit group
 
+# articles
+  linked_tickets: Linked tickets
+  cancel: Cancel
+
   activerecord:
     attributes:
       user:
@@ -278,6 +286,11 @@ en:
         name: Name
         description: Description
         default: Is default group
+      article:
+        title: Title
+        description: Description
+        body: Content
+        labels: Labels
   unauthorized:
     default: You are not authorized to access this page.
     read:
