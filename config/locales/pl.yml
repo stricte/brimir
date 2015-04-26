@@ -245,6 +245,7 @@ pl:
   linked_tickets_count: 'Suma połączonych zgłoszeń'
   linked_tickets: 'Połączone zgłoszenia'
   no_linked_tickets: 'Brak połączonych zgłoszeń'
+  no_suggested_tickets: 'Brak sugerowanych zgłoszeń'
   cancel: 'Anuluj'
   edit_article: 'Edytuj artykuł'
   new_article: 'Nowy artykuł'
@@ -253,6 +254,7 @@ pl:
   manage: 'Zarządzaj'
   suggested_articles: 'Sugerowane artykuły'
   no_suggested_articles: 'Brak sugerowanych artykułów'
+  no_linked_articles: 'Brak połączonych artykułów'
 
   activerecord:
     models:
