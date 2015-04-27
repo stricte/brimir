@@ -233,6 +233,11 @@ en:
 # articles
   linked_tickets: Linked tickets
   cancel: Cancel
+  attachments: Attachments
+  no_attachments: No attachments
+  remove: Remove
+  article_modified: Article modified
+  article_created: Article created
 
   activerecord:
     attributes:

@@ -255,6 +255,11 @@ pl:
   suggested_articles: 'Sugerowane artykuły'
   no_suggested_articles: 'Brak sugerowanych artykułów'
   no_linked_articles: 'Brak połączonych artykułów'
+  attachments: 'Załączniki'
+  no_attachments: 'Brak załączników'
+  remove: 'Usuń'
+  article_modified: 'Artykuł zaktualizowany'
+  article_created: 'Artykuł utworzony'
 
   activerecord:
     models:
