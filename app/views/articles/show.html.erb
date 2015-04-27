@@ -56,24 +56,24 @@
         </dd>
         <dt><%= t(:linked_tickets)%></dt>
         <dd>
-          <% if @article.tickets.size == 0 %>
-            <%= t(:no_linked_tickets)%>
-          <% end %>
-          <% @article.tickets.each do |ticket| %>
-            <div><%= link_to (ticket.subject || "<em>(#{t(:no_subject)})</em>".html_safe), ticket_path(ticket)%></div>
-          <% end %>
+        <% if @article.tickets.size == 0 %>
+          <%= t(:no_linked_tickets)%>
+        <% end %>
+        <% @article.tickets.each do |ticket| %>
+          <div><%= link_to (ticket.subject || "<em>(#{t(:no_subject)})</em>".html_safe), ticket_path(ticket)%></div>
+        <% end %>
         </dd>
         <dt><%= t(:attachments)%></dt>
         <dd>
-          <% if @article.attachments.empty? %>
-            <%= t(:no_attachments)%>
-          <% else %>
-            <ul class="attachments">
-              <%= render @article.attachments %>
-            </ul>
-          <% end %>
+        <% if @article.attachments.empty? %>
+          <%= t(:no_attachments)%>
+        <% else %>
+          <ul class="attachments">
+            <%= render @article.attachments %>
+          </ul>
+        <% end %>
         </dd>
-      </div>
-    </dl>
+      </dl>
+    </div>
   </div>
 </div>
