@@ -19,6 +19,7 @@ Major fork changes
 11. Agent is not an admin: can manage tickets only from own groups
 12. Pure calendar view added (fullcalendar)
 13. New notifications added: ping (remind assignee about ticket), deadline (for deadline reached)
+14. Very simple knowledge base with ability to connect articles to tickets
 
 Installation
 ------------
