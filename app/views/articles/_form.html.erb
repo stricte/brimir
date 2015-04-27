@@ -6,6 +6,9 @@
       <p><%= f.text_area :description %></p>
       <p><%= f.text_field :labels_list, {class: 'labels_list select2-tags'} %></p>
       <p><%= f.text_area :body, rows: 10, class: 'tinymce' %></p>
+
+      <%= render 'attachments/form', f: f %>
+
       <p>
       <%= f.submit class: 'button regular radius mrm' %>
       <%= link_to t(:cancel), (@article.new_record? ? articles_path : article_path(@article)) %>

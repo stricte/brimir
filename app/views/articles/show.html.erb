@@ -63,6 +63,16 @@
             <div><%= link_to (ticket.subject || "<em>(#{t(:no_subject)})</em>".html_safe), ticket_path(ticket)%></div>
           <% end %>
         </dd>
+        <dt><%= t(:attachments)%></dt>
+        <dd>
+          <% if @article.attachments.empty? %>
+            <%= t(:no_attachments)%>
+          <% else %>
+            <ul class="attachments">
+              <%= render @article.attachments %>
+            </ul>
+          <% end %>
+        </dd>
       </div>
     </dl>
   </div>

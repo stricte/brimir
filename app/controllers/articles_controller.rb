@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    if @article.update(article_params)
+    if @article.update_attributes(article_params)
       redirect_to article_path(@article), notice: t(:article_modified)
     else
       render :edit
@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :description, :body, :labels_list)
+    params.require(:article).permit(:title, :description, :body, :labels_list, attachments_attributes: [:file, :id, :_destroy])
   end
 
 end

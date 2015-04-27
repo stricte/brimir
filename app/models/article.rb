@@ -11,6 +11,8 @@ class Article < ActiveRecord::Base
   has_many :labels, through: :labelings
   has_many :ticket_articles
   has_many :tickets, through: :ticket_articles
+  has_many :attachments, as: :attachable, dependent: :destroy
+  accepts_nested_attributes_for :attachments, allow_destroy: true, :reject_if => lambda { |a| a[:file].blank? }
 
   scope :search, ->(term) {
     if !term.nil?

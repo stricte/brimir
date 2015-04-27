@@ -4,12 +4,13 @@
   <div data-attachments>
 
     <%= f.fields_for :attachments, f.object.attachments do |ff| %>
-      <%= render 'attachments/form_row', f: ff %>
+      <%= ff.check_box :_destroy, label: t(:remove, default: 'Remove') + ' - ' + (ff.object.try(:file_file_name) || t(:file_not_found)) %>
     <% end %>
 
   </div>
 
   <% params = { reply: true } if f.object.is_a?(Reply) %>
+  <% params = { article: true } if f.object.is_a?(Article) %>
 
   <%= link_to t(:attach_files), new_attachment_path(params), remote: true, class: 'small button radius secondary' %>
 

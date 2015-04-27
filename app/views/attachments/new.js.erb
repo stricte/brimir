@@ -1,6 +1,8 @@
 <%
   if params[:reply].present?
     entity = [Reply.new]
+  elsif params[:article].present?
+    entity = [Article.new]
   else
     entity = [Ticket.new]
   end

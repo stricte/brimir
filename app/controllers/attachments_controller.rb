@@ -24,6 +24,8 @@ class AttachmentsController < ApplicationController
 
     if @attachment.attachable_type == 'Ticket'
       authorize! :read, @attachment.attachable
+    elsif @attachment.attachable_type == 'Article'
+      authorize! :read, @attachment.attachable
     else
       authorize! :read, @attachment.attachable.ticket
     end
