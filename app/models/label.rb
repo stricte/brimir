@@ -20,6 +20,7 @@ class Label < ActiveRecord::Base
   has_many :labelings, dependent: :destroy
   has_many :users, through: :labelings, source: :labelable, source_type: 'User'
   has_many :articles, through: :labelings, source: :labelable, source_type: 'Article'
+  has_many :tickets, through: :labelings, source: :labelable, source_type: 'Ticket'
 
   after_initialize :assign_random_color
 
