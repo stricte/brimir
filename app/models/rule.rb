@@ -25,12 +25,12 @@ class Rule < ActiveRecord::Base
 
   def filter(ticket)
     if ticket.respond_to?(filter_field)
-      value = ticket.send(filter_field)
+      value = ticket.send(filter_field).to_s
     else
-      value = ticket.attributes[filter_field]
+      value = ticket.attributes[filter_field].to_s
     end
 
-    (filter_value == '*' || value.include?(filter_value)) if filter_operation == 'contains'
+    (filter_value == '*' || value.mb_chars.downcase.include?(filter_value.mb_chars.downcase)) if filter_operation == 'contains'
   end
 
   def execute(ticket)
