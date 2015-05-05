@@ -18,7 +18,7 @@ class Article < ActiveRecord::Base
     if !term.nil?
       term.gsub!(/[\\%_]/) { |m| "!#{m}" }
       term = "%#{term.downcase}%"
-      articles_ids = Label.where('LOWER(name) LIKE ? ESCAPE ?', term, '!').collect(&:articles).collect(&:first).reject(&:blank?).collect(&:id)
+      articles_ids = Label.where('LOWER(name) LIKE ? ESCAPE ?', term, '!').collect(&:articles).flatten.collect{|a| a.id}
       where('LOWER(title) LIKE ? ESCAPE ? OR LOWER(description) LIKE ? ESCAPE ? OR LOWER(body) LIKE ? ESCAPE ? OR id IN (?)',
                          term, '!', term, '!', term, '!', articles_ids).uniq
     end
