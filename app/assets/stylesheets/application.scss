@@ -351,3 +351,8 @@ div.fullcalendar.tickets-calendar tr td:hover.fc-day:not(.fc-today) {
 .reply_content {
   margin-top: 15px;
 }
+
+@media only screen and (max-width: 1480px) {
+  table.responsive td.col-lg,
+  table.responsive th.col-lg {display: none;}
+}

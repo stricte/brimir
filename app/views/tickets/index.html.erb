@@ -45,16 +45,16 @@
     </div>
   </div>
 </div>
-<table class="full">
+<table class="full responsive">
   <thead>
     <tr>
       <th><%= sortable 'subject', Ticket.human_attribute_name(:subject) %></th>
       <th><%= sortable 'replies_count', Ticket.human_attribute_name(:replies_count) %></th>
-      <th><%= sortable 'labels_count', Ticket.human_attribute_name(:labels) %></th>
+      <th class="col-lg"><%= sortable 'labels_count', Ticket.human_attribute_name(:labels) %></th>
       <th class="text-right"><%= sortable 'assignee.email', Ticket.human_attribute_name(:assignee) %></th>
-      <th class="text-right"><%= sortable 'time_consumed', Ticket.human_attribute_name(:time_consumed) %></th>
+      <th class="text-right col-lg"><%= sortable 'time_consumed', Ticket.human_attribute_name(:time_consumed) %></th>
       <th class="text-right"><%= sortable 'deadline', Ticket.human_attribute_name(:deadline) %></th>
-      <th class="text-right"><%= sortable 'group.name', Ticket.human_attribute_name(:group) %></th>
+      <th class="text-right col-lg"><%= sortable 'group.name', Ticket.human_attribute_name(:group) %></th>
       <th class="text-right"><%= t(:close_ticket) %></th>
     </tr>
   </thead>
@@ -81,7 +81,7 @@
           <% end %>
         </td>
 
-        <td class="text-secondary table-nowrap">
+        <td class="text-secondary table-nowrap col-lg">
           <% ticket.labels.viewable_by(current_user).each do |label| %>
             <%= render label %>
           <% end %>
@@ -102,7 +102,7 @@
           <% end %>
         <% end %>
       </td>
-      <td class="nowrap text-right text-secondary">
+      <td class="nowrap text-right text-secondary col-lg">
         <% if can? :update, ticket %>
           <a href="#" data-set-time-consumed="<%= ticket.time_consumed_as_duration.format('%d-%h-%m')%>">
             <span class=""><%= distance_of_time_in_words(ticket.time_consumed*60) %></span>
@@ -120,7 +120,7 @@
           <span class=""><%= ticket.deadline ? distance_of_time_in_words(Time.now, ticket.deadline) : t(:undefined)%></span>
         <% end %>
       </td>
-      <td class="nowrap text-right text-secondary">
+      <td class="nowrap text-right text-secondary col-lg">
         <% if can? :update, ticket %>
           <a href="#" data-set-group="<%= ticket.group_id %>">
             <span class=""><%= ticket.group.try(:name) || t(:undefined) %></span>
